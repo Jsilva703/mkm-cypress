@@ -18,4 +18,4 @@
 
  const soma = (a, b) => a + b
  
- console.log(soma(1, 4))
+ console.log(soma(4, 10))
