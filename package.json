@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.7.2"
+  },
+  "devDependencies": {
+    "grunt": "^1.6.1"
   }
 }
