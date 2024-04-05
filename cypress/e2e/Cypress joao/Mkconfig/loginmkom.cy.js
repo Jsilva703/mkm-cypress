@@ -16,6 +16,6 @@ Cypress.Commands.add("loginMKM", (seu_domínio, seu_login, sua_senha, codlgn) =>
 
 describe('Teste de Login no MKM Service', () => {
     it('Deve fazer login com sucesso', () => {
-        cy.loginMKM('comercial', 'jsilva', 'mkom@@2022', '12868');
+        cy.loginMKM('comercial', 'mkmcypress', '12345', '12868');
     });
 });
