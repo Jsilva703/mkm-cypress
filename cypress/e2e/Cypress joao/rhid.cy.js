@@ -15,7 +15,7 @@ describe('Teste de Login no RHID', () => {
   
   it('Deve fazer login com sucesso', () => 
   {
-    cy.login('joaovictornunessilva12345@gmail.com', '1975');
+    cy.login('1111', '11111');
     // Validação do login aqui
     cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/dashboard')
 
