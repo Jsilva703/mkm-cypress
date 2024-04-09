@@ -1,19 +1,19 @@
-it('sem testes ainda', () => {})
+it ('aprendendo ainda', () => { })
 
 const getSomething = () => {
-    setTimeout(() => {
-        console.log('respondendo...')
-        return 20;
-
-    }, 1000)
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => {
+            resolve(200);
+        }, 1000);
+    })
 }
 
 const system = () => {
     console.log('init');
-    const something = getSomething();
-    console.log(`Something is ${something}`);
+    getSomething().then(some => {
+        console.log(`Something is ${some}`)
+    })
     console.log('end')
-
 }
 
 system();
