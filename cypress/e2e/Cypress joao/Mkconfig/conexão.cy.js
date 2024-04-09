@@ -32,6 +32,6 @@ Cypress.Commands.add("loginMKM", (seu_domínio, seu_login, sua_senha, carro, tag
 
 describe('Teste de Login no MKM Service', () => {
     it('Deve fazer login com sucesso', () => {
-        cy.loginMKM('comercial', 'xxxxxx', 'xxxxx', 'cypress', 'nagios', 'teste cypress');
+        cy.loginMKM('comercial', 'mkmcypress', '12345', 'cypress', 'nagios', 'teste cypress');
     });
 });
