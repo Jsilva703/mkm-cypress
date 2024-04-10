@@ -14,14 +14,21 @@ Cypress.Commands.add("login", (email, senha) => {
 describe('Teste de Login no RHID', () => {
   
   it('Deve fazer login com sucesso', () => 
+
   {
-    cy.login('1111', '11111');
+    cy.wait(1000);
+    cy.login('joaovictornunessilva12345@gmail.com', '1975');
     // Validação do login aqui
-    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/dashboard')
+    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/dashboard');
 
-    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/marcacao_ponto')
+    //cy.wait(1000);
 
-    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/marcacao_ponto')
+    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/marcacao_ponto');
+
+    cy.wait(1000);
+
+
+    cy.url().should('eq' , 'https://www.rhid.com.br/v2/#/marcacao_ponto');
 
     
   });
