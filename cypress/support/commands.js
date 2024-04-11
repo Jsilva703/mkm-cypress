@@ -28,7 +28,7 @@ const LoginInfo = {
 
     seu_domínio: 'comercial',
     seu_login:'xxxxxx',
-    sua_senha: 'xxxxxx',
+    sua_senha: 'xxxxx',
     carro:'cypress-teste',
     tag:'nagios',
     lapis:'teste cypress'
