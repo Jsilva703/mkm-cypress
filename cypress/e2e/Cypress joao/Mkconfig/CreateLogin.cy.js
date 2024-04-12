@@ -43,9 +43,9 @@ describe('Teste de Login no MKM Service', () => {
 
         ('comercial',
 
-        'jsilva',
+        'xxxxx',
 
-        'mkom@@2022', 
+        'xxxxx', 
 
         'testecypress', 
 
