@@ -59,7 +59,7 @@ describe ('Work basic elements' , () => {
 
     })
 
-    it.only('ComboBox',() => {
+    it('ComboBox',() => {
 
     cy.get('[data-test="dataEscolaridade"]')
     .select('Especializacao')
@@ -70,6 +70,19 @@ describe ('Work basic elements' , () => {
       .invoke('val') //nunca mudar essa ação quando for necessário selecionar dois valores ao mesmo tempo
       .should('deep.equal', ['natacao','futebol'])
 
+
+    })
+
+    it('Aplicando a usabilidade do find', () => {
+
+        cy.get('#buttonList', {timeout:5000}).click();
+        //cy.wait(2000) recomendado apenas em casos e casos, mas o principal seria usar o timeout onde não paramos a aplicação do cypress
+        cy.get('#lista li')
+        .find('span')
+        .should('contain', 'Item 1', 'Item 2')
+        cy.get('#lista li')
+        .find('span')
+        .should('contain', 'Item 2') 
 
     })
 })

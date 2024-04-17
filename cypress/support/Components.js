@@ -32,16 +32,9 @@ Cypress.Commands.add("API", () => {
 Cypress.Commands.add("closeTour", () => {
     cy.wait(2000);
     
-    // Selecionar todos os elementos que contêm o texto "close"
-    cy.contains('close').each(($button) => {
-        cy.wrap($button).click({ force: true }); // Clica em cada botão
-        cy.wait(4000);
-    });
+    // Fazer a busca pelo elemento "close"
+    cy.get('.material-icons').contains('close').click();
 });
-
-
-
-
 
 Cypress.Commands.add('mapearCenters', () => {
     cy.get(':nth-child(1) > center > .paper-lobby').as('N1');
@@ -88,6 +81,11 @@ Cypress.Commands.add('CreateCC',() => {
     cy.get('.MuiFab-root > .material-icons').should('exist').click();
     cy.wait(2000)
     cy.contains('Novo Centro de Custo').should('exist');
-    cy.get('input[name="dcrcc"]').eq(1).type('teste', {force: true});
+    cy.get('input[name="dcrcc"]').eq(1).type('wrfsfsdfdfs', {force: true});
 
+})
+
+Cypress.Commands.add('limite', () => {
+    cy.get('input[name="limitecc"]').type('5000', {delay: 100});
+    cy.contains('Salvar').click();
 })

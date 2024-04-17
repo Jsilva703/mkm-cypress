@@ -26,9 +26,9 @@
 
 
 const loginCypress = {
-    seu_domínio: 'mkm',
-    seu_login: 'xxxxxx',
-    sua_senha: 'xxxxxx',
+    seu_domínio: 'meg',
+    seu_login: 'cypress',
+    sua_senha: '19751906',
 };
 
 Cypress.Commands.add("loginCypress", () => {
@@ -84,7 +84,14 @@ Cypress.Commands.add("loginCypress", () => {
             cy.contains('Relatório gerado com sucesso').should('be.visible')
             cy.contains('Clique aqui para baixar').should('have.text', 'Clique aqui para baixar').click();
 });  
+           it('Criação de Centro de Custo',() => {
+
+         cy.get('[data-tour="Centro de Custos"]').should('exist').click();
+
+})
     });
+
+    
     //cy.get('.material-icons').click();
     //cy.wait(3000); // Esperar por 3 segundos para a resposta antes de continuar
     //cy.get('[data-testid="AddIcon"]').click();
@@ -141,13 +148,57 @@ Cypress.Commands.add("loginCypress3",() => {
             cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
             cy.get('[href="https://alpha3.mkmservice.com/mkconfig/#/connections/whatsapp"]').should('exist', 'WhatsApp').click();
             cy.wait(2000);
-            cy.get('.PrivateSwitchBase-input').should('exist', 'Streaming(QRCODE)').click();
+            cy.get('.PrivateSwitchBase-input').then('exist', 'Streaming(QRCODE)').click();
             cy.url().should('eq', 'https://alpha3.mkmservice.com/mkconfig/#/connections/streaming');
 
       
 });  
     });
     
-
+   
     
+    
+    
+    
+    
+})
+
+Cypress.Commands.add("loginCypress4", () => {
+    cy.visit('https://alpha3.mkmservice.com/');
+
+    const { seu_domínio, seu_login, sua_senha } = loginCypress;
+
+    cy.contains('Aceitar e Fechar').click();
+    cy.get('input[name="auth_domain"]').type(seu_domínio);
+    cy.get('input[name="auth_login"]').type(seu_login);
+    cy.get('input[name="auth_senha"]').type(sua_senha);
+    cy.contains('Entrar').click();
+    cy.intercept('GET', 'https://core.beta.mkmservice.com/sessions/current').as('getSession');
+    cy.intercept('GET', 'https://core.beta.mkmservice.com/sissms/api/empresas/1624').as('getEmpresas');
+    cy.intercept('GET', 'https://core.beta.mkmservice.com/health').as('getHealth');
+    cy.intercept('POST', 'https://boo-apiprod.mkmservice.com/api/login').as('postLogin');
+    cy.intercept('GET', 'https://core.beta.mkmservice.com/core/api/communications?&enabled=true&available=true').as('getCommunications');
+
+   // cy.wait(['@postToken'], {timeout: 7000});
+    cy.wait ([
+
+        '@getSession',
+        '@getEmpresas',
+        '@getHealth',
+        '@postLogin',
+        '@getCommunications',
+
+        ])
+
+        cy.wait(2000);
+        cy.get('[name="communicationModal"] > .MuiDialog-container > .MuiPaper-root > .MuiDialogContent-root')
+        .should('be.visible')
+        .then(() => {
+            cy.get('.material-icons').click();
+            cy.wait(4000)
+        });
+    
+
+
+   
 })
