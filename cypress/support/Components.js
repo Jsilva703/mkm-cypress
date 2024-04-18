@@ -15,6 +15,7 @@ Cypress.Commands.add("LoginCypress", () => {
     cy.get('input[name="auth_domain"]').type(Seu_domínio); 
     cy.get('input[name="auth_login"]').type(seu_login); 
     cy.get('input[name="auth_senha"]').type(sua_senha); 
+    cy.wait(1000);
     cy.contains('Entrar').click();
 });
 
@@ -69,6 +70,7 @@ Cypress.Commands.add('menuCentrocc', () => {
 
 Cypress.Commands.add('filter1',() => {
 
+    cy.wait(2000)
     cy.get('input[name="codcc"]').type('18861');
     cy.wait(1000);
     cy.get('button[aria-label="Buscar"][type="button"]').click()
@@ -88,4 +90,18 @@ Cypress.Commands.add('CreateCC',() => {
 Cypress.Commands.add('limite', () => {
     cy.get('input[name="limitecc"]').type('5000', {delay: 100});
     cy.contains('Salvar').click();
+})
+
+Cypress.Commands.add('block', () => {
+
+    cy.wait(1000);
+    cy.get('div[data-tour="Blocklist"]').should('exist').click({ force: true });
+    cy.wait(1000);
+    cy.get('.MuiOutlinedInput-input').type('11911031972');
+    cy.get('button[aria-label="Buscar"][type="button"]').click()
+})
+
+Cypress.Commands.add('clone', () => {
+    cy.wait(1000);
+    cy.get('div[data-tour="Campanha"]').should('exist').click({ force: true })
 })
