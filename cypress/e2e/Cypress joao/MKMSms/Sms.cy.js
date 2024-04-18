@@ -1,7 +1,7 @@
 
 import './../../../support/Components'
 
-describe('SMS', () => {
+describe('SMS-Envio', () => {
 
    it('SMS', () => {
     cy.visitarURL();
