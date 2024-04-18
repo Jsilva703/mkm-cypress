@@ -46,7 +46,7 @@ Cypress.Commands.add('mapearCenters', () => {
 
 Cypress.Commands.add('N4',() => {
 
-    cy.get('@N3').should('exist').click();
+    cy.get('@N4').should('exist').click();
 })
 Cypress.Commands.add('N3',() => {
 
@@ -54,11 +54,11 @@ Cypress.Commands.add('N3',() => {
 })
 Cypress.Commands.add('N2',() => {
 
-    cy.get('@N3').should('exist').click();
+    cy.get('@N2').should('exist').click();
 })
 Cypress.Commands.add('N1',() => {
 
-    cy.get('@N3').should('exist').click();
+    cy.get('@N1').should('exist').click();
 })
 
 Cypress.Commands.add('menuCentrocc', () => {
@@ -97,11 +97,46 @@ Cypress.Commands.add('block', () => {
     cy.wait(1000);
     cy.get('div[data-tour="Blocklist"]').should('exist').click({ force: true });
     cy.wait(1000);
-    cy.get('.MuiOutlinedInput-input').type('11911031972');
+    cy.get('.MuiOutlinedInput-input').type('11912778807' ,{delay:1000});
     cy.get('button[aria-label="Buscar"][type="button"]').click()
 })
 
-Cypress.Commands.add('clone', () => {
+Cypress.Commands.add('campanha', () => {
     cy.wait(1000);
-    cy.get('div[data-tour="Campanha"]').should('exist').click({ force: true })
+    cy.contains('Campanha').should('exist').click({ force: true })
 })
+
+Cypress.Commands.add('avançada', () => {
+
+    cy.get('button[aria-label="Busca Avançada"]').click();
+    cy.contains('Busca Avançada').should('exist');
+    cy.wait(1000);
+    cy.get('input[name="_id"]').type('10427', {delay:100});
+    cy.contains('Buscar').click( {force: true}, {timeout:1000});
+    cy.get('.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1yxmbwk[variant="contained"]')
+     .as('moreVertButton');
+     cy.wait(1000);
+     cy.get('@moreVertButton').click();
+    
+})
+
+Cypress.Commands.add('menuopen',() => {
+    cy.wait(1000);
+    cy.get('span.material-icons[data-tour="menuOpen"]').click();
+
+})
+
+Cypress.Commands.add('clonar',() => {
+
+     cy.get('button[aria-label="Clonar esta campanha"]').then($el => {
+
+    cy.wrap($el).click();
+                                       })
+
+    for (let i = 0; i < 6; i++) {
+        cy.get('button.MuiButton-containedSecondary').click({multiple:true});
+        cy.wait(1000); // Espera 1 segundo antes de clicar novamente
+      }
+      
+    
+});
