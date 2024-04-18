@@ -85,4 +85,15 @@ describe ('Work basic elements' , () => {
         .should('contain', 'Item 2') 
 
     })
+
+    it('Invoke', () => {
+
+        const getValue = () => 2;
+        const soma = (b,c) => b + c;
+
+        cy.wrap({fn: getValue}).invoke('fn').should('be.equal',2)
+        cy.wrap({fn: soma}).invoke('fn', 10, 10).should('be.equal', 20)
+        cy.get('#formNome').invoke('val', "texto vai invoke")
+        cy.window().invoke('alert', 'Dá pra ver?')
+    })
 })

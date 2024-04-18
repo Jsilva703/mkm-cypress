@@ -26,7 +26,7 @@ Cypress.Commands.add("API", () => {
         }
     }).as('allSuccessfulRequests'); // garantir que todas as interceptações sejam atribuídas ao mesmo alias
 
-    cy.wait('@allSuccessfulRequests', { timeout: 20000 });
+    cy.wait('@allSuccessfulRequests', { timeout: 50000 });
     cy.wait(2000);
 });
 
@@ -138,5 +138,40 @@ Cypress.Commands.add('clonar',() => {
         cy.wait(1000); // Espera 1 segundo antes de clicar novamente
       }
       
+    
+})
+
+Cypress.Commands.add('Sms', () => {
+
+    cy.wait(2000);
+    cy.get('div[data-tour="Monitoramento"]').should('exist').click({ force: true });
+    cy.wait(1000);
+})
+
+Cypress.Commands.add('envio',() => {
+    cy.get('span.material-icons[data-tour="addEnvios').then($el => {
+        cy.wrap($el).click();
+    })
+})
+
+Cypress.Commands.add('avulso',() => {
+    cy.contains('Envio Avulso').should('exist', {timeout:2000}).click();
+})
+
+Cypress.Commands.add('fillPhoneNumber', (phoneNumber) => {
+    cy.get('textarea[name="mailling_dados_phones"]').type(phoneNumber);
+  });
+  
+
+Cypress.Commands.add('number', () => {
+    cy.fillPhoneNumber('11911031972');
+    cy.wait(1000);
+    //cy.get('div[role="combobox"][aria-labelledby=":r11:-label :r11:"]').click();
+     ///cy.contains('Cypress').should('exist').click();
+    cy.get('div[role="combobox"]').eq(1).click(); 
+    cy.wait(1000);
+    cy.contains('li', 'Cypress').click(); 
+    cy.wait(5000);
+    cy.get('.MuiDialogActions-root > :nth-child(2)').click();
     
 });
