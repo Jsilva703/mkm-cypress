@@ -5,7 +5,7 @@ const LoginCypress = {
 };
 
 Cypress.Commands.add("visitarURL", () => {
-    cy.visit('https://beta.mkmservice.com/');
+    cy.visit('https://portal.mkom.tec.br/#/');
 });
 
 Cypress.Commands.add("LoginCypress", () => {
@@ -175,3 +175,55 @@ Cypress.Commands.add('number', () => {
     cy.get('.MuiDialogActions-root > :nth-child(2)').click();
     
 });
+
+Cypress.Commands.add('atendimento', () => {
+
+    cy.wait(5000)
+    cy.contains('Atendimento').should('exist').click();
+
+})
+
+Cypress.Commands.add('menuClose', () => {
+
+    cy.wait(1000);
+    cy.get('span.material-icons[data-tour="menuClose"]').click();
+})
+
+Cypress.Commands.add('createAttendence', () => {
+
+    cy.get('#atendimento').should('exist').click();
+
+})
+
+Cypress.Commands.add('Cross', () => {
+
+    cy.get('.whatsapp-cross-icon').should('exist').click();
+    cy.wait(2000);
+    cy.get('input[name="channel_session.identifier"]')
+    .should('exist')
+    .type('11911031972');
+    cy.get('div[role="combobox"]').eq(1).click(); 
+    cy.wait(1000);
+    cy.contains('li', 'Cypress').click();
+
+
+})
+
+Cypress.Commands.add('Listbox', () => {
+
+    cy.get('div[role="combobox"]').eq(0).click(); 
+    cy.wait(1000);
+    cy.contains('li', '7310').click();
+    cy.wait(1000);
+    // Verifica se o campo de texto existe e insere um conteúdo
+    cy.get('textarea[name="channel_session.content"]')
+    .should('exist')
+    .clear()  // Limpa o campo antes de preencher
+    .type('Joaozinho é foda', {delay:100}); // Exemplo de ação: preencher o campo com um texto
+    cy.contains('Enviar').should('exist')
+    .click();
+
+})
+
+
+
