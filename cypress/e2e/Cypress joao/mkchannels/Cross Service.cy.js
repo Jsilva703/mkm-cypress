@@ -16,6 +16,6 @@ describe('createAtendimento' ,() => {
         cy.createAttendence();
         cy.Cross();
         cy.Listbox();
-        //cy.Closeinfo();
+        cy.Closeinfo();
     })
 })
