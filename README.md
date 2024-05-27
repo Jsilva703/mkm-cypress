@@ -10,10 +10,12 @@ Antes de começar a executar o Cypress, certifique-se de ter seguido os seguinte
 2. Verifique se o Cypress e o npm estão instalados em seu sistema.
 3. Instale as dependências do Cypress executando `npm install`.
 4. Faça as alterações necessárias dentro da pasta do repositório.
+5. Certifique-se de sempre trabalhar dentro da pasta `e2e` para os testes de ponta a ponta.
+
 
 Após concluir essas etapas, você pode começar a executar os testes do Cypress.
 
-First, clone the repository:
+Para clonar o repositório, use o seguinte comando:
 
 ```bash
 git clone [URL do repositório]
@@ -37,13 +39,17 @@ Para executar os testes do Cypress:
 ```bash
 npm run cypress
 ```
-
 Uso
-- This project is used for post-deployment testing to ensure the integrity of the platform.
 
-Saiba Mais
+- Este projeto é utilizado para testes pós-deploy para garantir a integridade da plataforma.
+
 Para saber mais sobre o Cypress, confira os seguintes recursos:
 
 - https://docs.cypress.io/guides/overview/why-cypress - aprenda sobre os recursos e API do Cypress.
 
 - https://docs.cypress.io/examples/recipes -  um projeto que demonstra vários testes Cypress.
+
+Contribuições:
+
+- Contribuições são bem-vindas! Por favor, valide possíveis testes que possam ajudar a manter a integridade do sistema.
+
