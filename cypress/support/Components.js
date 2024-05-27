@@ -1,5 +1,3 @@
-import { should } from "chai";
-
 const LoginCypress = {
     Seu_domínio: 'meg',
     seu_login: 'cypress',
@@ -206,7 +204,7 @@ Cypress.Commands.add('Cross', () => {
     .type('11911031972');
     cy.get('div[role="combobox"]').eq(1).click(); 
     cy.wait(1000);
-    cy.contains('li', 'Cypress3').click();
+    cy.contains('li', 'Cypress').click();
 
 
 })
@@ -215,33 +213,17 @@ Cypress.Commands.add('Listbox', () => {
 
     cy.get('div[role="combobox"]').eq(0).click(); 
     cy.wait(1000);
-    cy.contains('li', '9912').click();
+    cy.contains('li', '7310').click();
     cy.wait(1000);
     // Verifica se o campo de texto existe e insere um conteúdo
     cy.get('textarea[name="channel_session.content"]')
     .should('exist')
     .clear()  // Limpa o campo antes de preencher
-    .type('Gabi se fudeu', {delay:100}); // Exemplo de ação: preencher o campo com um texto
+    .type('Joaozinho é foda', {delay:100}); // Exemplo de ação: preencher o campo com um texto
     cy.contains('Enviar').should('exist')
     .click();
-    cy.wait(1000);
 
 })
 
-//Cypress.Commands.add('Closeinfo', () => {
 
-        //cy.get('.MuiDialogContent-root.css-1ty026z', { timeout: 0 }).then($el => {
-       // if ($el.length) {
-          // Se o elemento estiver presente, clique no botão de confirmação dentro do elemento
-        //  cy.wrap($el).find('Confirmar').click(); // Substitua 'button.confirm-button' pelo seletor correto do botão de confirmação
-           // }
-      //});
-//})
 
-Cypress.Commands.add('Closeinfo', () => {
-
-    cy.wait(1000);
-    cy.contains('Confirmar')
-    should('Confirmar')
-    .click({force:true});
-})
