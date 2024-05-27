@@ -52,4 +52,3 @@ Para saber mais sobre o Cypress, confira os seguintes recursos:
 Contribuições:
 
 - Contribuições são bem-vindas! Por favor, valide possíveis testes que possam ajudar a manter a integridade do sistema.
-
