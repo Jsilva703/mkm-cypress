@@ -1,3 +1,5 @@
+import './../../../support/Components'
+
 Cypress.Commands.add("loginMKM", (casa, 
     mansão, 
     aceso, 
@@ -5,13 +7,7 @@ Cypress.Commands.add("loginMKM", (casa,
     seu_tel, email, senha, carro) => {
     cy.visit('https://portal.mkmservice.com/mkconfig/#/logins');
 
-    cy.contains('Aceitar e Fechar').click();
-
-    cy.get('input[name="auth_domain"]').type(casa);
-
-    cy.get('input[name="auth_login"]').type(mansão);
-
-    cy.get('input[name="auth_senha"]').type(aceso);
+    cy.LoginCypress();
 
     cy.contains('Entrar').click();
 
