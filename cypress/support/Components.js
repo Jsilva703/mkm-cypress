@@ -123,7 +123,7 @@ Cypress.Commands.add('avançada', () => {
 Cypress.Commands.add('menuopen',() => {
     cy.wait(1000);
     cy.get('span.material-icons[data-tour="menuOpen"]').click();
-
+    cy.wait(1000)
 })
 
 Cypress.Commands.add('clonar',() => {
@@ -242,3 +242,36 @@ Cypress.Commands.add('Closeinfo', () => {
     .click({force:true});
 })
 
+Cypress.Commands.add('Config', () => { 
+    
+    
+    cy.contains('.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-1ti72ph', 'Configurações', { timeout: 0 }).then($el => {
+        if ($el.length) {
+          // Se o elemento estiver presente, execute o clique
+          cy.wrap($el).click();
+        }
+      });
+
+
+})
+
+Cypress.Commands.add('Subject', () => {
+
+    timeout:1000;
+    cy.contains('Departamentos').should('exist').click()
+    cy.wait(1000)
+})
+
+Cypress.Commands.add('idsub', () => {
+
+    cy.get('input[name="id"]')
+  .type('6070', { delay: 1000 })
+  .should('have.value', '6070');
+
+cy.get('button[aria-label="Buscar"][type="button"]').click({ force: true });
+
+cy.wait(5000); // Espera algum tempo para o resultado da busca ser carregado
+
+cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
+
+})
