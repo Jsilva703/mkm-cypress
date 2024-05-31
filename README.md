@@ -18,7 +18,7 @@ Após concluir essas etapas, você pode começar a executar os testes do Cypress
 Para clonar o repositório, use o seguinte comando:
 
 ```bash
-git clone [URL do repositório]
+git clone [git@github.com:Joao848846/mkm-cypress.git]
 ```
 
 Para instalar o Cypress e as dependências do npm:
