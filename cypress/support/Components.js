@@ -187,6 +187,7 @@ Cypress.Commands.add('menuClose', () => {
 
     cy.wait(1000);
     cy.get('span.material-icons[data-tour="menuClose"]').click();
+    cy.wait(3000);
 })
 
 Cypress.Commands.add('createAttendence', () => {
@@ -197,7 +198,7 @@ Cypress.Commands.add('createAttendence', () => {
 
 Cypress.Commands.add('Cross', () => {
 
-    cy.get('.whatsapp-cross-icon').should('exist').click();
+    cy.get('.whatsapp-cross-icon').should('exist').click(); // Validação da mídia a ser seleciona para criar o atendimento 
     cy.wait(2000);
     cy.get('input[name="channel_session.identifier"]')
     .should('exist')
@@ -213,7 +214,7 @@ Cypress.Commands.add('Listbox', () => {
 
     cy.get('div[role="combobox"]').eq(0).click(); 
     cy.wait(1000);
-    cy.contains('li', '9912').click();
+    cy.contains('li', '9912').click(); // Selecionar a conexão para criar o atendimento passando o ID
     cy.wait(1000);
     // Verifica se o campo de texto existe e insere um conteúdo
     cy.get('textarea[name="channel_session.content"]')
@@ -274,4 +275,36 @@ cy.wait(5000); // Espera algum tempo para o resultado da busca ser carregado
 
 cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
 
+
 })
+
+Cypress.Commands.add('ReportPDF', () => {
+
+    cy.contains('Painel de Gestão').should('exist').click();
+    cy.wait(5000);
+    cy.contains('button', 'Fila de Espera').should('be.visible').click();
+    cy.wait(5000);
+    cy.get('.MuiListItemSecondaryAction-root > .MuiButtonBase-root > .material-icons').click({force: true})
+})
+
+Cypress.Commands.add('Contact', () => {
+
+    cy.get('.MuiAccordionSummary-content').contains('h4', 'Dados do Contato').should('be.visible').click();
+    cy.wait(4000);
+    cy.contains('label', 'Protocolo')
+    .parent() // Assume que o input está no mesmo contêiner pai
+    .find('input') // Encontra o input dentro do contêiner pai
+    .should('exist')
+    .and('be.visible')
+    .type('24988460', { delay: 300 }).type('{enter}', { force: true });
+
+});
+
+Cypress.Commands.add('ClickPDFIcon', () => {
+    // Encontra o ícone com a classe 'material-icons' e o texto 'picture_as_pdf'
+    cy.get('span.material-icons')
+      .contains('picture_as_pdf')
+      .should('be.visible')
+      .click({ force: true }); // Força o clique mesmo que o elemento não esteja em um estado interativo usual
+  });
+  
