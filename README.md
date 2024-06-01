@@ -37,7 +37,7 @@ Document npm install:
 Para executar os testes do Cypress:
 
 ```bash
-npm run cypress
+npm run dev
 ```
 Uso
 
