@@ -16,12 +16,6 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
 }
 
-const sonarqubeReporter = require('cypress-sonarqube-reporter');
+require('dotenv').config();
 
-module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-
-  on('task', sonarqubeReporter);
-};
 
