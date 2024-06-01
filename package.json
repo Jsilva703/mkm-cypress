@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress": "cypress open"
+    "dev": "cypress open"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
     "cypress-file-upload": "^5.0.8",
-    "cypress-real-events": "^1.12.0"
+    "cypress-real-events": "^1.12.0",
+    "cypress-sonarqube-reporter": "^1.13.0"
   }
 }
