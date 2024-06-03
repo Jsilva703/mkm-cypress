@@ -37,20 +37,6 @@ jobs:
         env:
           CI: true
 
-      - name: Archive screenshots on failure
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Archive videos on failure
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
       - name: Send notification to Microsoft Teams
         if: failure()
         run: |
