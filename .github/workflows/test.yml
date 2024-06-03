@@ -40,8 +40,10 @@ jobs:
       - name: Generate Mochawesome report
         run: npx mochawesome-merge cypress/reports/*.json > cypress/reports/mochawesome.json
 
-      - name: Convert report to HTML
-        run: npx marge cypress/reports/mochawesome.json -f report -o cypress/reports
+      - name: Generate unique report filename and convert to HTML
+        run: |
+          REPORT_FILENAME=report-$(date +'%Y%m%d%H%M%S').html
+          npx marge cypress/reports/mochawesome.json -f $REPORT_FILENAME -o cypress/reports
 
       - name: Archive test results
         uses: actions/upload-artifact@v2
@@ -62,6 +64,8 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+
 
 
       - name: Send notification to Microsoft Teams
