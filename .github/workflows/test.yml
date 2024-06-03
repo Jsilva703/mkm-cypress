@@ -37,12 +37,6 @@ jobs:
         env:
           CI: true
 
-      - name: Archive test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: mochawesome-report
-          path: cypress/screenshots/reports
-
       - name: Archive screenshots on failure
         if: failure()
         uses: actions/upload-artifact@v2
@@ -85,5 +79,12 @@ jobs:
                 "markdown": true
               }]
             }' $WEBHOOK_URL
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: cypress/reports
+
         
         
