@@ -66,10 +66,11 @@ jobs:
                 "facts": [{
                   "name": "Repository",
                   "value": "${{ github.repository }}"
-                }, {
-                  "name": "Workflow",
-                  "value": "${{ github.workflow }}"
-                }, {
+                  }, 
+                  {
+                  "name": "Error Details",
+                  "value": "'$ERROS_LOG'"
+                  } ,{
                   "name": "Branch",
                   "value": "${{ github.ref }}"
                 }, {
