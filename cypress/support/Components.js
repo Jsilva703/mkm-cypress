@@ -267,13 +267,14 @@ Cypress.Commands.add('idsub', () => {
 
     cy.get('input[name="id"]')
   .type('6070', { delay: 1000 })
-  .should('have.value', '6070');
+  .should('have.value', '6070')
+  .screenshot();
 
-cy.get('button[aria-label="Buscar"][type="button"]').click({ force: true });
+    cy.get('button[aria-label="Buscar"][type="button"]').click({ force: true });
 
-cy.wait(5000); // Espera algum tempo para o resultado da busca ser carregado
+    cy.wait(5000); // Espera algum tempo para o resultado da busca ser carregado
 
-cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
+    cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
 
 
 })
@@ -305,6 +306,7 @@ Cypress.Commands.add('ClickPDFIcon', () => {
     cy.get('span.material-icons')
       .contains('picture_as_pdf')
       .should('be.visible')
-      .click({ force: true }); // Força o clique mesmo que o elemento não esteja em um estado interativo usual
+      .click({ force: true }) // Força o clique mesmo que o elemento não esteja em um estado interativo usual
+      .screenshot();
   });
   
