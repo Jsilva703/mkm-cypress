@@ -37,17 +37,6 @@ jobs:
         env:
           CI: true
 
-      - name: Validate Cypress test results
-        if: failure()
-        run: |
-          test_results=$(npm run teste)
-          if [[ $test_results == *"All tests passed"* ]]; then
-            echo "All tests passed. Continuing with the workflow."
-          else
-            echo "Some tests failed. Aborting the workflow."
-            exit 1
-          fi
-
       - name: Archive test results
         if: failure()
         uses: actions/upload-artifact@v2
@@ -66,7 +55,6 @@ jobs:
         if: failure()
         run: |
             WEBHOOK_URL="https://mkmservicecom.webhook.office.com/webhookb2/a11da518-494e-4b92-ab2e-eae01ec8ff11@6bb1f81b-c7c7-4eec-a417-11ceb617097d/IncomingWebhook/73006ad307184662bfbe7b39dec2a5f3/6707798e-6692-4adb-8ec0-09ea01b9bb94"
-            ERROR_LOG=$(cat cypress-screenshots/error.log)
             curl -X POST -H "Content-Type: application/json" -d '{
               "@type": "MessageCard",
               "@context": "http://schema.org/extensions",
@@ -78,21 +66,18 @@ jobs:
                 "facts": [{
                   "name": "Repository",
                   "value": "${{ github.repository }}"
-                  }, 
-                  {
-                  "name": "Error Details",
-                  "value": "'$ERROR_LOG'"
-                  } ,{
+                }, {
+                  "name": "Workflow",
+                  "value": "${{ github.workflow }}"
+                }, {
                   "name": "Branch",
                   "value": "${{ github.ref }}"
                 }, {
                   "name": "Commit",
                   "value": "${{ github.sha }}"
                 }],
-                "images": [{
-                  "image": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/cypress-screenshots/*.png"
-                }],
                 "markdown": true
               }]
-            }' "$WEBHOOK_URL"
+            }' $WEBHOOK_URL
+        
         
