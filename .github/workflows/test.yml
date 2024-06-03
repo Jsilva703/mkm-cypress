@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mochawesome-report
-          path: cypress/reports
+          path: cypress/screenshots/reports
 
       - name: Archive screenshots on failure
         if: failure()
