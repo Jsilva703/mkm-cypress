@@ -54,28 +54,29 @@ jobs:
       - name: Send notification to Microsoft Teams
         if: failure()
         run: |
-          WEBHOOK_URL="https://mkmservicecom.webhook.office.com/webhookb2/a11da518-494e-4b92-ab2e-eae01ec8ff11@6bb1f81b-c7c7-4eec-a417-11ceb617097d/IncomingWebhook/73006ad307184662bfbe7b39dec2a5f3/6707798e-6692-4adb-8ec0-09ea01b9bb94"
-          curl -H "Content-Type: application/json" -d '{
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "summary": "Cypress Test Results",
-            "themeColor": "FF0000",
-            "sections": [{
-              "activityTitle": "Cypress Test Suite Failed",
-              "activitySubtitle": "A test run has failed",
-              "facts": [{
-                "name": "Repository",
-                "value": "'${{ github.repository }}'"
-              }, {
-                "name": "Workflow",
-                "value": "'${{ github.workflow }}'"
-              }, {
-                "name": "Branch",
-                "value": "'${{ github.ref }}'"
-              }, {
-                "name": "Commit",
-                "value": "'${{ github.sha }}'"
-              }],
-              "markdown": true
-            }]
-          }' $WEBHOOK_URL
+            WEBHOOK_URL="https://mkmservicecom.webhook.office.com/webhookb2/a11da518-494e-4b92-ab2e-eae01ec8ff11@6bb1f81b-c7c7-4eec-a417-11ceb617097d/IncomingWebhook/73006ad307184662bfbe7b39dec2a5f3/6707798e-6692-4adb-8ec0-09ea01b9bb94"
+            curl -X POST -H "Content-Type: application/json" -d '{
+              "@type": "MessageCard",
+              "@context": "http://schema.org/extensions",
+              "summary": "Cypress Test Results",
+              "themeColor": "FF0000",
+              "sections": [{
+                "activityTitle": "Cypress Test Suite Failed",
+                "activitySubtitle": "A test run has failed",
+                "facts": [{
+                  "name": "Repository",
+                  "value": "${{ github.repository }}"
+                }, {
+                  "name": "Workflow",
+                  "value": "${{ github.workflow }}"
+                }, {
+                  "name": "Branch",
+                  "value": "${{ github.ref }}"
+                }, {
+                  "name": "Commit",
+                  "value": "${{ github.sha }}"
+                }],
+                "markdown": true
+              }]
+            }' "$WEBHOOK_URL"
+        
