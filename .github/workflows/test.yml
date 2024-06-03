@@ -44,18 +44,25 @@ jobs:
         run: npx marge cypress/reports/mochawesome.json -f report -o cypress/reports
 
       - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: cypress/reports
+
+      - name: Archive test results on failure
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-          
-      - name: Archive videos
+
+      - name: Archive videos on failure
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: cypress-videos
           path: cypress/videos
+
 
       - name: Send notification to Microsoft Teams
         if: failure()
