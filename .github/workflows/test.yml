@@ -37,6 +37,12 @@ jobs:
         env:
           CI: true
 
+      - name: Generate Mochawesome report
+        run: npx mochawesome-merge cypress/reports/*.json > cypress/reports/mochawesome.json
+
+      - name: Convert report to HTML
+        run: npx marge cypress/reports/mochawesome.json -f report -o cypress/reports
+
       - name: Archive test results
         if: failure()
         uses: actions/upload-artifact@v2
