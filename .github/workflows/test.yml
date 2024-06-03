@@ -69,7 +69,7 @@ jobs:
                   }, 
                   {
                   "name": "Error Details",
-                  "value": "'$ERROS_LOG'"
+                  "value": "'$ERROR_LOG'"
                   } ,{
                   "name": "Branch",
                   "value": "${{ github.ref }}"
