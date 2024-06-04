@@ -68,7 +68,7 @@ jobs:
               "themeColor": "FF0000",
               "sections": [{
                 "activityTitle": "Cypress Test Suite Failed",
-                "activitySubtitle": "A test run has failed",
+                "activitySubtitle": "A test run has failed. Please check the details below.",
                 "facts": [{
                   "name": "Repository",
                   "value": "${{ github.repository }}"
@@ -76,6 +76,10 @@ jobs:
                   "name": "Workflow",
                   "value": "${{ github.workflow }}"
                 }, {
+                  "name": "Action Details",
+                  "value": "[View Action Logs](https://github.com/Joao848846/mkm-cypress/actions)"
+                   },
+                {
                   "name": "Branch",
                   "value": "${{ github.ref }}"
                 }, {
