@@ -57,6 +57,11 @@ jobs:
             name: cypress-videos
             path: cypress/videos
 
+      - name: Capture Cypress test summary
+        run: |
+              npx cypress run > cypress/reports/test-summary.txt
+          
+
       - name: Send notification to Microsoft Teams
         if: failure()
         run: |
@@ -86,7 +91,8 @@ jobs:
                   "name": "Commit",
                   "value": "${{ github.sha }}"
                 }],
-                "markdown": true
+                "markdown": true,
+                \"text\": \"**Test Summary:**\n\`\`\`\n$TEST_SUMMARY\n\`\`\`\"
               }]
             }' $WEBHOOK_URL
 
