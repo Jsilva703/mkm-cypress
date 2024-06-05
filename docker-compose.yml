@@ -1,0 +1,12 @@
+version: '3'
+services:
+  cypress:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - CYPRESS_BASE_URL=http://dockerhost
+    command: npx cypress run --config-file cypress.config.js

@@ -14,7 +14,7 @@ describe('Teste de Login no MKM Service', () => {
         cy.filter1();
         cy.CreateCC();
         cy.limite();
-        cy.closeTour();
+        //cy.closeTour();
 
         }) 
     });

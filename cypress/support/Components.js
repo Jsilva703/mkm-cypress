@@ -83,7 +83,7 @@ Cypress.Commands.add('CreateCC',() => {
     cy.get('.MuiFab-root > .material-icons').should('exist').click();
     cy.wait(2000)
     cy.contains('Novo Centro de Custo').should('exist');
-    cy.get('input[name="dcrcc"]').eq(1).type('wrfsfsdfdfs', {force: true});
+    cy.get('input[name="dcrcc"]').eq(1).type('66', {force: true});
 
 })
 
@@ -198,7 +198,7 @@ Cypress.Commands.add('createAttendence', () => {
 
 Cypress.Commands.add('Cross', () => {
 
-    cy.get('.whatsapp-cross-icon').should('exist').click(); // Validação da mídia a ser seleciona para criar o atendimento 
+    cy.get('.whatsapp-cross-icon').should('be.visible').click({force: true}); // Validação da mídia a ser seleciona para criar o atendimento 
     cy.wait(2000);
     cy.get('input[name="channel_session.identifier"]')
     .should('exist')
@@ -267,8 +267,8 @@ Cypress.Commands.add('idsub', () => {
 
     cy.get('input[name="id"]')
   .type('6070', { delay: 1000 })
-  .should('have.value', '6070')
-  .screenshot();
+  .should('have.value', '6070');
+  
 
     cy.get('button[aria-label="Buscar"][type="button"]').click({ force: true });
 
@@ -306,7 +306,54 @@ Cypress.Commands.add('ClickPDFIcon', () => {
     cy.get('span.material-icons')
       .contains('picture_as_pdf')
       .should('be.visible')
-      .click({ force: true }) // Força o clique mesmo que o elemento não esteja em um estado interativo usual
-      .screenshot();
+      .click({ force: true }); // Força o clique mesmo que o elemento não esteja em um estado interativo usual
+      
   });
   
+  Cypress.Commands.add('qrcode', () => {
+
+   // cy.contains('Conexões').should('be.visible').click({force:true})
+   // cy.url().should('include', '/connections');
+
+    //cy.wait(2000)
+   // cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
+    //cy.get('.PrivateSwitchBase-input').then('exist', 'Streaming(QRCODE)').click();
+   // cy.get('[href="https://portal.mkom.tec.br/mkconfig/#/connections"]')
+    //.should('exist', 'WhatsApp').click();
+
+    cy.get('[data-tour="Conexões"]').should('be.visible');
+    cy.wait(1000);
+    cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
+    cy.get('[href="https://portal.mkom.tec.br/mkconfig/#/connections/whatsapp"]').should('exist', 'WhatsApp').click();
+    cy.wait(2000);
+    cy.contains('Streaming(QR Code)').should('be.visible').click();
+    cy.url().should('eq', 'https://portal.mkom.tec.br/mkconfig/#/connections/streaming');
+  })
+
+  Cypress.Commands.add('Filterlogin', () => {
+
+    cy.contains('Logins').should('be.visible').click({force: true})
+    cy.wait(2000)
+    cy.get('input[name="codlgn"]').should('exist').type(18422, {delay:100});
+    cy.get('button[name="search"]').click();
+  })
+
+  Cypress.Commands.add('reportcampaing', () => {
+
+    cy.contains('Campanha').should('be.visible').click({force: true})
+    cy.wait(5000)
+    cy.get('span.material-icons[data-tour="menuClose"]').click();
+    cy.wait(2000)
+    cy.get('button[aria-label="Busca Avançada"]')
+    .should('be.visible')
+    .click({force: true})
+  })
+
+Cypress.Commands.add('textid', () => {
+
+    cy.get('input[name="_id"]')
+    .should('be.visible')
+    .type('11240')
+    cy.contains('Buscar').click( {force: true}, {timeout:1000});
+    cy.get('[data-tour="downloadCampanha"]').click({force: true});
+})

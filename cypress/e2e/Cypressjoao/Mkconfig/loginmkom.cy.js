@@ -1,17 +1,16 @@
-Cypress.Commands.add("loginMKM", (seu_domínio, seu_login, sua_senha, codlgn) => {
-    cy.visit('https://portal.mkmservice.com/mkconfig/#/logins');
-    cy.contains('Aceitar e Fechar').click();
-    cy.get('input[name="auth_domain"]').type(seu_domínio);
-    cy.get('input[name="auth_login"]').type(seu_login);
-    cy.get('input[name="auth_senha"]').type(sua_senha);
-    cy.contains('Entrar').click();
-    cy.get('input[name="codlgn"]').should('exist').type(codlgn);
-    cy.get('button[name="search"]').click();
-    
-});
+import '../../../support/Components'
 
-describe('Teste de Login no MKM Service', () => {
+describe('Filter Login', () => {
     it('Deve fazer login com sucesso', () => {
-        cy.loginMKM('comercial', 'mkmcypress', '12345', '17236');
+
+        cy.visitarURL();
+        cy.LoginCypress();
+        cy.API();
+        cy.closeTour();
+        cy.mapearCenters();
+        cy.N4();
+        cy.menuopen();
+        cy.Filterlogin();
+        
     });
 });

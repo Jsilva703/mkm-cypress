@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
-    "cypress": "^13.10.0",
+    "cypress": "^13.11.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-real-events": "^1.12.0",

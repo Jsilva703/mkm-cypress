@@ -1,11 +1,17 @@
 
-import './../../../support/commands'
+import './../../../support/Components'
 
-describe('Teste de Login no MKM Service', () => {
+describe('Streaming QRCODE', () => {
     it('Validation Function ', () => {
 
-        cy.loginCypress3();
-        
+        cy.visitarURL();
+        cy.LoginCypress();
+        cy.API();
+        cy.closeTour();
+        cy.mapearCenters();
+        cy.N4();
+        cy.menuopen();
+        cy.qrcode();
 
     });
 });
