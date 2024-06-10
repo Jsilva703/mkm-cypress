@@ -39,6 +39,13 @@ Para executar os testes do Cypress:
 ```bash
 npm run dev
 ```
+
+Para executar os testes localmente com o workflow do git:
+
+```bash
+npm run teste
+```
+
 Uso
 
 - Este projeto é utilizado para testes pós-deploy para garantir a integridade da plataforma.
