@@ -9,7 +9,7 @@ Antes de começar a executar o Cypress, certifique-se de ter seguido os seguinte
 1. Clone este repositório em sua máquina local.
 2. Verifique se o Cypress e o npm estão instalados em seu sistema.
 3. Instale as dependências do Cypress executando `npm install`.
-4. Faça as alterações necessárias dentro da pasta do repositório.
+4. Faça as alterações necessárias, as alterações devem ser feitas em branch únicas
 5. Certifique-se de sempre trabalhar dentro da pasta `e2e` para os testes de ponta a ponta.
 
 
