@@ -77,4 +77,27 @@ jobs:
           curl -X POST -H "Content-Type: application/json" -d "{
             \"@type\": \"MessageCard\",
             \"@context\": \"http://schema.org/extensions\",
-            \"summary\":
+            \"summary\": \"Cypress Test Run Failed\",
+            \"themeColor\": \"FF0000\",
+            \"sections\": [{
+              \"activityTitle\": \"Cypress Test Suite Failure\",
+              \"activitySubtitle\": \"A test run has failed. Please check the details below.\",
+              \"facts\": [{
+                \"name\": \"Repository =>\",
+                \"value\": \"${{ github.repository }}\"
+              }, {
+                \"name\": \"Workflow =>\",
+                \"value\": \"${{ github.workflow }}\"
+              }, {
+                \"name\": \"Branch =>\",
+                \"value\": \"${{ github.ref }}\"
+              }, {
+                \"name\": \"Commit =>\",
+                \"value\": \"${{ github.sha }}\"
+              }, {
+                \"name\": \"Action Details =>\",
+                \"value\": \"[View Action Logs](https://github.com/Joao848846/mkm-cypress/actions)\"
+              }],
+              \"markdown\": true
+            }]
+          }" $WEBHOOK_URL
