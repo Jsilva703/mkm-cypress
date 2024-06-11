@@ -83,7 +83,7 @@ Cypress.Commands.add('CreateCC',() => {
     cy.get('.MuiFab-root > .material-icons').should('exist').click();
     cy.wait(2000)
     cy.contains('Novo Centro de Custo').should('exist');
-    cy.get('input[name="dcrcc"]').eq(1).type('66', {force: true});
+    cy.get('input[name="dcrcc"]').eq(1).type('300', {force: true});
 
 })
 
@@ -206,7 +206,6 @@ Cypress.Commands.add('Cross', () => {
     cy.get('div[role="combobox"]').eq(1).click(); 
     cy.wait(1000);
     cy.contains('li', 'Cypress').click();
-
 
 })
 
@@ -356,4 +355,65 @@ Cypress.Commands.add('textid', () => {
     .type('11240')
     cy.contains('Buscar').click( {force: true}, {timeout:1000});
     cy.get('[data-tour="downloadCampanha"]').click({force: true});
+})
+
+Cypress.Commands.add('sessionstatus', () => {
+
+    cy.contains('Status da Sessão').should('be.visible').click({force: true})
+    cy.get('input[name="name"]')
+    .should('exist')
+    .type('Teste Cypress')
+    cy.wait(3000)
+    cy.get('button[aria-label="Buscar"][type="button"]').click()
+    cy.wait(3000)
+    //cy.get('[data-tour="Download Geral"]').click({force: true});
+    //cy.get('div[aria-label="Download Geral"][type="button"]').click({force: true})
+    cy.get('div[aria-label="Download Geral"] button').click({force: true}) // botão para realizar a ação do download
+
+})
+
+Cypress.Commands.add('connedit', () => {
+
+    cy.contains('Conexões')
+    .scrollIntoView({timeout:2000})
+    .should('be.visible').click({force: true})
+    cy.wait(3000)
+    cy.get('span.material-icons[data-tour="menuClose"]').click();
+    cy.get('input[name="identifier"]')
+    .scrollIntoView({timeout:2000})
+    .should('be.visible').type('11125', {delay: 100})
+})
+
+Cypress.Commands.add('buscar', () => {
+
+    cy.get('button[aria-label="Buscar"][type="button"]').click()
+})
+
+Cypress.Commands.add('dashboard', () => {
+
+    cy.contains('Dashboard').should('be.visible').click({force:true})
+    cy.url().should('eq', 'https://portal.mkom.tec.br/mkchannels/#/dashboard');
+})
+
+
+Cypress.Commands.add('choosedate', () => {
+
+    cy.contains('Monitoramento').should('have.text', 'Monitoramento').click({force: true})
+    cy.get('span.material-icons[data-tour="menuClose"]').click();
+    cy.get('button[aria-label="Choose date, selected date is 10 de jun de 2024"][type="button"]').click({force: true})
+    //cy.get('.MuiPickersPopper-paper .MuiDayCalendar-slideTransition button:nth-child(1)')
+   // .should('be.visible')
+   // cy.get('[aria-label="sábado"]').should('be.visible').should('exist')
+   // .should('exist')
+    //.click({multiple: true})
+    cy.get('.MuiPickersDay-root').contains('1').click();
+
+    //cy.get('svg')
+   // .should('have.attr', 'width', '20')
+    //.and('have.attr', 'height', '20')
+    //.find('path')
+    //.first()
+    //.invoke('attr', 'fill', 'blue')
+    //.click()
+    //cy.get('div[aria-label="Choose date"] button').click({force: true})
 })

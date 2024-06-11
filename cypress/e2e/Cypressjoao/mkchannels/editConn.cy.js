@@ -1,18 +1,30 @@
 import '../../../support/Components'
 
-describe('Edit Conn', () => {
+describe('Edit Connection', () => {
 
-    it('Edit Connn', () => {
+    before(() => {
+        // Executa uma vez antes de todos os testes
+        cy.visitarURL();   // Função para visitar a URL inicial
+        cy.LoginCypress(); // Função para realizar o login
+        cy.API();          // Função para configurar a API
+    });
 
-        cy.visitarURL();
-        cy.LoginCypress();
-        cy.API();
-        cy.closeTour();
-        cy.mapearCenters();
-        cy.N2();
-        cy.menuopen();
-        cy.Config();
-        cy.connedit();
-        cy.buscar();
-    })
-})
+    beforeEach(() => {
+        // Executa antes de cada teste
+        cy.closeTour();    // Função para fechar qualquer tour ou pop-up
+    });
+
+    it('Edit Connection', () => {
+        // Mapeia os modulos da anti sala dos módulos
+        cy.mapearCenters(); 
+
+        // O passo a ser seguido para realizar a edição da conexão
+        cy.N2();           // N2 na documentação indica o channels
+        cy.menuopen();     // Abre o menu
+        cy.Config();       // Abre a configuração
+        cy.connedit();     // Essa ação vai fazera seleção de conexão 
+
+        // Realiza a busca após navegar para a área de edição
+        cy.buscar();       
+    });
+});
