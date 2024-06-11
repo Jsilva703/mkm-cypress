@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress 
 
 on:
   push:
@@ -11,10 +11,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -33,17 +30,14 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Start server and run Cypress tests
-        run: |
-          npm run start &
-          npx wait-on http://localhost:3000
-          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel
+      # Adicionando o comando para rodar os testes Cypress e registrar as execuções
+      - name: Run Cypress tests and record
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CI: true
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Merge Mochawesome JSON reports
         run: npx mochawesome-merge cypress/reports/*.json -o cypress/reports/mochawesome.json
