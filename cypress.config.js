@@ -13,10 +13,7 @@ module.exports = defineConfig({
     requestTimeout: 10000,
     defaultCommandTimeout: 25000,
     connectTimeout: 35000,
-    
     //baseUrl: "http://dockerhost", // Atualize aqui com o endereço IP correto
-
-
     
     // Renomeie integrationFolder para specPattern
     reporter: 'cypress-mochawesome-reporter',
@@ -25,7 +22,10 @@ module.exports = defineConfig({
       overwrite: false,
       html: true,
       json: true
-    }
+    },
+    video: true, // Garante que a gravação de vídeo está ativada
+    
   },
 });
+
 

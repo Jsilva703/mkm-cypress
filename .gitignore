@@ -1,0 +1,6 @@
+cypress/downloads
+cypress/video/
+cypress/screenshots/
+cypress/env/
+cypress/reports
+

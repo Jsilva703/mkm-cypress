@@ -1,4 +1,4 @@
-name: Cypress 
+name: Cypress
 
 on:
   push:
@@ -32,7 +32,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Adicionando o comando para rodar os testes Cypress e registrar as execuções
       - name: Run Cypress tests and record
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
         env:
@@ -78,27 +77,4 @@ jobs:
           curl -X POST -H "Content-Type: application/json" -d "{
             \"@type\": \"MessageCard\",
             \"@context\": \"http://schema.org/extensions\",
-            \"summary\": \"Cypress Test Run Failed\",
-            \"themeColor\": \"FF0000\",
-            \"sections\": [{
-              \"activityTitle\": \"Cypress Test Suite Failure\",
-              \"activitySubtitle\": \"A test run has failed. Please check the details below.\",
-              \"facts\": [{
-                \"name\": \"Repository =>\",
-                \"value\": \"${{ github.repository }}\"
-              }, {
-                \"name\": \"Workflow =>\",
-                \"value\": \"${{ github.workflow }}\"
-              }, {
-                \"name\": \"Branch =>\",
-                \"value\": \"${{ github.ref }}\"
-              }, {
-                \"name\": \"Commit =>\",
-                \"value\": \"${{ github.sha }}\"
-              }, {
-                \"name\": \"Action Details =>\",
-                \"value\": \"[View Action Logs](https://github.com/Joao848846/mkm-cypress/actions)\"
-              }],
-              \"markdown\": true
-            }]
-          }" $WEBHOOK_URL
+            \"summary\":
