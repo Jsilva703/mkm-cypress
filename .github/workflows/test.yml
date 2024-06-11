@@ -1,4 +1,4 @@
-name: Cypress 
+name: Cypress Tests
 
 on:
   push:
@@ -33,15 +33,13 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm start
-          wait-on: 'http://localhost:3000'
-          record: true
-          parallel: true
+      - name: Start server and run Cypress tests
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
