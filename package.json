@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cypress open",
-    "teste": "cypress run"
+    "teste": "cypress run",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -23,3 +24,4 @@
     "cypress-sonarqube-reporter": "^1.13.0"
   }
 }
+
