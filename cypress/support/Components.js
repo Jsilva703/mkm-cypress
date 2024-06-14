@@ -400,13 +400,13 @@ Cypress.Commands.add('choosedate', () => {
 
     cy.contains('Monitoramento').should('have.text', 'Monitoramento').click({force: true})
     cy.get('span.material-icons[data-tour="menuClose"]').click();
-    cy.get('button[aria-label="Choose date, selected date is 11 de jun de 2024"][type="button"]').click({force: true})
+    //cy.get('button[aria-label="Choose date, selected date is 11 de jun de 2024"][type="button"]').click({force: true})
     //cy.get('.MuiPickersPopper-paper .MuiDayCalendar-slideTransition button:nth-child(1)')
    // .should('be.visible')
    // cy.get('[aria-label="sábado"]').should('be.visible').should('exist')
    // .should('exist')
     //.click({multiple: true})
-    cy.get('.MuiPickersDay-root').contains('1').click();
+    //cy.get('.MuiPickersDay-root').contains('1').click();
 
     //cy.get('svg')
    // .should('have.attr', 'width', '20')

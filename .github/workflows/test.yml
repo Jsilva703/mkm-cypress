@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - principal
+  schedule:
+    # Executa “Às 22:00​​ todos os dias da semana de segunda a sexta”
+    - cron: '0 17 * * 1-5'
 
 jobs:
   cypress-run:
@@ -69,35 +72,3 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
-
-      - name: Send notification on test failure
-        if: failure()
-        run: |
-          WEBHOOK_URL="https://mkmservicecom.webhook.office.com/webhookb2/a11da518-494e-4b92-ab2e-eae01ec8ff11@6bb1f81b-c7c7-4eec-a417-11ceb617097d/IncomingWebhook/73006ad307184662bfbe7b39dec2a5f3/6707798e-6692-4adb-8ec0-09ea01b9bb94"
-          curl -X POST -H "Content-Type: application/json" -d "{
-            \"@type\": \"MessageCard\",
-            \"@context\": \"http://schema.org/extensions\",
-            \"summary\": \"Cypress Test Run Failed\",
-            \"themeColor\": \"FF0000\",
-            \"sections\": [{
-              \"activityTitle\": \"Cypress Test Suite Failure\",
-              \"activitySubtitle\": \"A test run has failed. Please check the details below.\",
-              \"facts\": [{
-                \"name\": \"Repository =>\",
-                \"value\": \"${{ github.repository }}\"
-              }, {
-                \"name\": \"Workflow =>\",
-                \"value\": \"${{ github.workflow }}\"
-              }, {
-                \"name\": \"Branch =>\",
-                \"value\": \"${{ github.ref }}\"
-              }, {
-                \"name\": \"Commit =>\",
-                \"value\": \"${{ github.sha }}\"
-              }, {
-                \"name\": \"Action Details =>\",
-                \"value\": \"[View Action Logs](https://github.com/Joao848846/mkm-cypress/actions)\"
-              }],
-              \"markdown\": true
-            }]
-          }" $WEBHOOK_URL
