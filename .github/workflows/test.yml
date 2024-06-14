@@ -80,12 +80,13 @@ jobs:
 
       - name: Notify Cronitor complete
         if: success()
-        run: curl -X POST https://cronitor.link/your-monitor-code/complete
+        run: curl -X POST https://cypress-mkm.cronitorstatus.com/complete
         env:
           CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
 
       - name: Notify Cronitor failure
         if: failure()
-        run: curl -X POST https://cronitor.link/your-monitor-code/fail
+        run: curl -X POST https://cypress-mkm.cronitorstatus.com/fail
         env:
           CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
+
