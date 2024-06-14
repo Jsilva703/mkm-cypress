@@ -8,8 +8,8 @@ on:
     branches:
       - principal
   schedule:
-    # Executa “Às 22:00​​ todos os dias da semana de segunda a sexta”
-    - cron: '0 17 * * 1-5'
+    # Executa às 18:00 todos os dias da semana de segunda a sexta
+    - cron: '0 18 * * 1-5'
 
 jobs:
   cypress-run:
@@ -34,6 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Notify Cronitor start
+        run: curl -X POST https://cronitor.link/your-monitor-code/run
+        env:
+          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
 
       - name: Run Cypress tests and record
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -72,3 +77,15 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+      - name: Notify Cronitor complete
+        if: success()
+        run: curl -X POST https://cronitor.link/your-monitor-code/complete
+        env:
+          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
+
+      - name: Notify Cronitor failure
+        if: failure()
+        run: curl -X POST https://cronitor.link/your-monitor-code/fail
+        env:
+          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
