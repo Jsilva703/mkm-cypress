@@ -93,7 +93,7 @@ jobs:
           name: Relé de monitoramento Cronitor
           on:
               workflow_run:
-                workflows: teste
+                workflows: ["*"]
                 types: [requested, completed]
                       jobs:
                 send-telemetry:
