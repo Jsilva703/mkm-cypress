@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Log workflow dispatch
+        run: echo "Workflow dispatched at $(date)"
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
