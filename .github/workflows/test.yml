@@ -1,15 +1,14 @@
 name: Cypress
 
 on:
+  workflow_dispatch:
+  
+  schedule:
+    - cron: '0 16 * * 1-5'  # Executa todos os dias úteis às 16:00
+
   push:
     branches:
       - principal
-  pull_request:
-    branches:
-      - principal
-  schedule:
-    # Executa às 18:00 todos os dias da semana de segunda a sexta
-    - cron: '0 18 * * 1-5'
 
 jobs:
   cypress-run:
@@ -89,3 +88,24 @@ jobs:
         run: curl -X POST https://cypress-mkm.cronitorstatus.com/fail
         env:
           CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
+
+  cronitor-monitor:
+      name: Relé de monitoramento Cronitor
+on:
+       workflow_run:
+        workflows: ["*"]
+        types: [requested, completed]
+
+      jobs:
+        send-telemetry:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Send execution details to Cronitor agent for GitHub Actions
+            uses: cronitorio/monitor-github-actions@v7
+            with:
+              event: ${{ toJSON(github.event) }}
+              github_token: ${{ secrets.CYPRESS_TOKEN }}
+              cronitor_key: ${{ secrets.CRONITOR_API_KEY }}
+              cronitor_group: ações
+              cronitor_notify: padrão
