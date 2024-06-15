@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
   schedule:
-    - cron: '0 0 * * *'  # Executa todos os dias à meia-noite (00:00)
+    - cron: '0 13 * * *'  # Executa todos os dias às 13:00 UTC (10:00 BRT)
 
   push:
     branches:
@@ -13,6 +13,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
 
     steps:
       - name: Log workflow dispatch
