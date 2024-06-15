@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
   schedule:
-    - cron: '0 0 * * *'  # Executa todos os dias à meia-noite (00:00)
+    - cron: 5 4 * * *  # https://crontab.guru/
 
   push:
     branches:
