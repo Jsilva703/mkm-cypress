@@ -45,16 +45,7 @@ jobs:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
-      - name: List report files
-        run: ls cypress/reports/*.json
-        
-
-      - name: Merge Mochawesome JSON reports
-        run: npx mochawesome-merge cypress/reports/*.json -o cypress/reports/mochawesome.json
-
-      - name: Generate Mochawesome HTML report
-        run: npx marge cypress/reports/mochawesome.json -o cypress/reports --reportFilename=index
-
+     
       - name: Archive Cypress test results
         uses: actions/upload-artifact@v4
         with:
