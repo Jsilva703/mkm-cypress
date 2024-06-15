@@ -1,11 +1,9 @@
 name: Cypress
 
 on:
-  workflow_dispatch:
-  
+  workflow_dispatch:  # Permite iniciar manualmente
   schedule:
     - cron: '0 13 * * *'  # Executa todos os dias às 13:00 UTC (10:00 BRT)
-
   push:
     branches:
       - principal
@@ -13,7 +11,6 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Log workflow dispatch
@@ -80,4 +77,5 @@ jobs:
       - name: Notify Cronitor failure
         if: failure()
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=fail'
+
 
