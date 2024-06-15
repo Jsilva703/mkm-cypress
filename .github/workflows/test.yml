@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
   schedule:
-    - cron: 5 4 * * *  # https://crontab.guru/
+    - cron: '0 0 * * *'  # Executa todos os dias à meia-noite (00:00)
 
   push:
     branches:
@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Log workflow dispatch
         run: echo "Workflow dispatched at $(date)"
 
@@ -39,9 +38,7 @@ jobs:
         run: npm install
 
       - name: Notify Cronitor start
-        run: curl -X POST https://cypress-mkm.cronitorstatus.com/
-        env:
-          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
 
       - name: Run Cypress tests and record
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -49,7 +46,6 @@ jobs:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
-     
       - name: Archive Cypress test results
         uses: actions/upload-artifact@v4
         with:
@@ -78,13 +74,9 @@ jobs:
 
       - name: Notify Cronitor complete
         if: success()
-        run: curl -X POST https://cypress-mkm.cronitorstatus.com/complete
-        env:
-          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=complete'
 
       - name: Notify Cronitor failure
         if: failure()
-        run: curl -X POST https://cypress-mkm.cronitorstatus.com/fail
-        env:
-          CRONITOR_API_KEY: ${{ secrets.CRONITOR_API_KEY }}
-          
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=fail'
+
