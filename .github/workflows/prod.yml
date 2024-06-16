@@ -3,7 +3,7 @@ name: Cypress
 on:
   workflow_dispatch:  # Permite iniciar manualmente
   schedule:
-    - cron: '0 13 * * *'  # Executa todos os dias às 13:00 UTC (10:00 BRT)
+    - cron: '0 16 * * 1,4' # Executaàs 16:00 UTC (13:00 BRT) segunda e quinta
   push:
     branches:
       - principal
