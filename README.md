@@ -39,6 +39,9 @@ Para executar os testes do Cypress:
 ```bash
 npm run dev
 ```
+Para visualizar dados das specs
+
+[![mkm-cypress](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/count/jp8ghz/Cypress&style=for-the-badge&logo=cypress)](https://cloud.cypress.io/projects/jp8ghz/runs)
 
 Para executar os testes localmente com o workflow do git:
 
@@ -59,3 +62,4 @@ Para saber mais sobre o Cypress, confira os seguintes recursos:
 Contribuições:
 
 - Contribuições são bem-vindas! Por favor, valide possíveis testes que possam ajudar a manter a integridade do sistema.
+
