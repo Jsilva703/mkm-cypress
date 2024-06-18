@@ -1,6 +1,7 @@
-# mkm-cypress
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&height=90&color=gradient&section=header&fontAlignY=73&reversal=true&animation=scaleIn&strokeWidth=1&descAlignY=100&fontSize=55&descSize=-2&textBg=false"/>
 
-Este é um projeto de teste da plataforma que utiliza Cypress para validar tanto front-end quanto algumas funcionalidades de back-end, facilitando a localização e correção de possíveis erros.
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=100&size=17&duration=3000&pause=977&color=F7F7F7&center=verdadeiro&vCenter=verdadeiro&repeat=verdadeiro&random=falso&width=435&lines=MKM-CYPRESS;Desenvolvido+para+automa%C3%A7%C3%A3o;Para+validar%3A;BACK-END+e+FRONT-END)](https://git.io/typing-svg)
+
 
 ## Começando
 
