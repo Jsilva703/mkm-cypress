@@ -6,60 +6,63 @@ Este é um projeto de teste da plataforma que utiliza Cypress para validar tanto
 
 Antes de começar a executar o Cypress, certifique-se de ter seguido os seguintes passos:
 
-1. Clone este repositório em sua máquina local.
-2. Verifique se o Cypress e o npm estão instalados em seu sistema.
-3. Instale as dependências do Cypress executando `npm install`.
-4. Faça as alterações necessárias dentro da pasta do repositório.
-5. Certifique-se de sempre trabalhar dentro da pasta `e2e` para os testes de ponta a ponta.
+1. **Clone este repositório em sua máquina local:**
+   ```bash
+   git clone git@github.com:Joao848846/mkm-cypress.git
 
+2. **Verifique se o Cypress e o Yarn estão instalados em seu sistema:**
+   
+ - Se o Yarn não estiver instalado, você pode instalá-lo globalmente através do npm:
 
-Após concluir essas etapas, você pode começar a executar os testes do Cypress.
+   ```bash
+   npm install --global yarn
+   
+3. **Faça as alterações necessárias dentro da pasta do repositório.**
+4. **Certifique-se de sempre trabalhar dentro da pasta e2e para os testes de ponta a ponta.**
 
-Para clonar o repositório, use o seguinte comando:
+# Instalação das Dependências
 
-```bash
-git clone [git@github.com:Joao848846/mkm-cypress.git]
+   ```bash
+cd mkm-cypress
+yarn
 ```
+Certifique-se de que todas as alterações sejam feitas na pasta do repositório.
 
-Para instalar o Cypress e as dependências do npm:
+# Executar Testes do Cypress
 
-```bash
-npm install cypress --save-dev
-npm install
+Após concluir as etapas acima, você pode começar a executar os testes do Cypress.
+
+Executar na Interface Gráfica do Cypress
+Para abrir a interface gráfica do Cypress, execute:
+
+   ```bash
+yarn dev
 ```
+Isso abrirá a interface do Cypress, onde você pode selecionar e executar seus testes interativamente.
 
-Document npm install: 
+#Executar Testes em Modo Headless
 
-- https://docs.npmjs.com/cli/v10/commands/npm-install
-
-- Certifique-se de que todas as alterações sejam feitas na pasta do repositório.
-
-Para executar os testes do Cypress:
-
-```bash
-npm run dev
+Para executar os testes Cypress em modo headless (ideal para execução automatizada ou integração contínua, execute apenas com push ou pull request), use o seguinte comando:
+   ```bash
+yarn teste
 ```
+# Agendamento Automático
+
+- Este projeto possui um cron configurado para rodar automaticamente às segundas e quintas-feiras às 13 horas.
+
+  <br/>
+
 Para visualizar dados das specs
 
 [![mkm-cypress](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/count/jp8ghz/Cypress&style=for-the-badge&logo=cypress)](https://cloud.cypress.io/projects/jp8ghz/runs)
 
-Para executar os testes localmente com o workflow do git:
+# Uso
 
-```bash
-npm run teste
-```
+-Este projeto é utilizado para testes pós-deploy para garantir a integridade da plataforma.
 
-Uso
-
-- Este projeto é utilizado para testes pós-deploy para garantir a integridade da plataforma.
-
-Para saber mais sobre o Cypress, confira os seguintes recursos:
+# Recursos do Cypress
 
 - https://docs.cypress.io/guides/overview/why-cypress - aprenda sobre os recursos e API do Cypress.
 
 - https://docs.cypress.io/examples/recipes -  um projeto que demonstra vários testes Cypress.
-
-Contribuições:
-
-- Contribuições são bem-vindas! Por favor, valide possíveis testes que possam ajudar a manter a integridade do sistema.
 
