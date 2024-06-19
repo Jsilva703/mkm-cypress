@@ -417,3 +417,20 @@ Cypress.Commands.add('choosedate', () => {
     //.click()
     //cy.get('div[aria-label="Choose date"] button').click({force: true})
 })
+
+Cypress.Commands.add('Contact', () => { 
+    
+    
+    cy.contains('.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-1ti72ph', 'Contatos', { timeout: 0 }).then($el => {
+        if ($el.length) {
+          // Se o elemento estiver presente, execute o clique
+          cy.wrap($el).click();
+        }
+      });
+    cy.contains('Gestão de Contatos')
+    .should('be.visible')
+    .click({force:true});
+    cy.wait(3000)
+    cy.get('input[name="name"]')
+    .should('be.visible').type('João Victor', {delay: 100})
+    })

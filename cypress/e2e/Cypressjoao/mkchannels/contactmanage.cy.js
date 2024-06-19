@@ -21,5 +21,6 @@ describe('Edit Connection', () => {
         cy.N2();           // N2 na documentação indica o channels
         cy.menuopen();     // Abre o menu
         cy.Contact();
+        cy.buscar();
     });
 });
