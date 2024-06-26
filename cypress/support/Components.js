@@ -41,13 +41,9 @@ Cypress.Commands.add('mapearCenters', () => {
     cy.get(':nth-child(1) > center > .paper-lobby').as('N1');
     cy.get(':nth-child(2) > center > .paper-lobby').as('N2');
     cy.get(':nth-child(3) > center > .paper-lobby').as('N3');
-    cy.get(':nth-child(4) > center > .paper-lobby').as('N4');
   });
 
-Cypress.Commands.add('N4',() => {
 
-    cy.get('@N4').should('exist').click();
-})
 Cypress.Commands.add('N3',() => {
 
     cy.get('@N3').should('exist').click();

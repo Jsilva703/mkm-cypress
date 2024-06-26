@@ -14,15 +14,19 @@
   "author": "Joao Victor <joaovictornunessilva12345@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "cypress-sonarqube-reporter": "^1.9.0",
+    "dotenv": "^16.4.5",
+    "fast-xml-parser": "^4.4.0"
   },
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
     "cypress": "^13.11.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
-    "cypress-real-events": "^1.12.0",
-    "cypress-sonarqube-reporter": "^1.13.0"
+    "cypress-real-events": "^1.12.0"
   },
-  "repository": "git@github.com:Joao848846/mkm-cypress.git"
+  "repository": "git@github.com:Joao848846/mkm-cypress.git",
+  "resolutions": {
+    "fast-xml-parser": "4.4.0"
+  }
 }
