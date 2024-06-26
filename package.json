@@ -14,7 +14,7 @@
   "author": "Joao Victor <joaovictornunessilva12345@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "cypress-sonarqube-reporter": "^1.9.0",
+    "cypress-sonarqube-reporter": "^1.13.0",
     "dotenv": "^16.4.5",
     "fast-xml-parser": "^4.4.0"
   },
