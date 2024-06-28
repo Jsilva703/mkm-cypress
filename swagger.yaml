@@ -1,0 +1,1042 @@
+openapi: 3.0.0
+info:
+  title: Comandos Cypress para Portal MKOM
+  description: Documentação dos comandos Cypress para interação com o portal MKOM
+  version: 1.0.0
+
+paths:
+  /loginCypress:
+    post:
+      summary: Realiza o login no portal MKOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auth_domain:
+                  type: string
+                auth_login:
+                  type: string
+                auth_senha:
+                  type: string
+              required:
+                - auth_domain
+                - auth_login
+                - auth_senha
+      responses:
+        '200':
+          description: Login bem-sucedido
+
+  /visitarURL:
+    get:
+      summary: Visita a URL inicial do portal MKOM
+      responses:
+        '200':
+          description: Página carregada com sucesso
+
+  /api:
+    get:
+      summary: Configura interceptações para todas as solicitações API
+      responses:
+        '200':
+          description: Interceptações configuradas com sucesso
+
+  /closeTour:
+    get:
+      summary: Fecha o tour inicial do portal MKOM
+      responses:
+        '200':
+          description: Tour fechado com sucesso
+
+  /mapearCenters:
+    get:
+      summary: Mapeia os centros de custo no portal MKOM
+      responses:
+        '200':
+          description: Centros de custo mapeados com sucesso
+
+  /N1:
+    get:
+      summary: Seleciona o primeiro centro de custo no portal MKOM
+      responses:
+        '200':
+          description: Primeiro centro de custo selecionado com sucesso
+
+  /N2:
+    get:
+      summary: Seleciona o segundo centro de custo no portal MKOM
+      responses:
+        '200':
+          description: Segundo centro de custo selecionado com sucesso
+
+  /N3:
+    get:
+      summary: Seleciona o terceiro centro de custo no portal MKOM
+      responses:
+        '200':
+          description: Terceiro centro de custo selecionado com sucesso
+
+  /configg:
+    get:
+      summary: Acessa e configura as opções do perfil no portal MKOM
+      responses:
+        '200':
+          description: Configurações do perfil acessadas e configuradas com sucesso
+
+  /menuCentrocc:
+    get:
+      summary: Acessa o menu de centro de custos no portal MKOM
+      responses:
+        '200':
+          description: Menu de centro de custos acessado com sucesso
+
+  /filter1:
+    get:
+      summary: Aplica filtro de busca no portal MKOM
+      responses:
+        '200':
+          description: Filtro aplicado com sucesso
+
+  /CreateCC:
+    get:
+      summary: Cria um novo centro de custo no portal MKOM
+      responses:
+        '200':
+          description: Centro de custo criado com sucesso
+
+  /limite:
+    get:
+      summary: Define o limite de um centro de custo no portal MKOM
+      responses:
+        '200':
+          description: Limite definido com sucesso
+
+  /block:
+    get:
+      summary: Bloqueia um número no portal MKOM
+      responses:
+        '200':
+          description: Número bloqueado com sucesso
+
+  /campanha:
+    get:
+      summary: Acessa o menu de campanhas no portal MKOM
+      responses:
+        '200':
+          description: Menu de campanhas acessado com sucesso
+
+  /avançada:
+    get:
+      summary: Realiza busca avançada no portal MKOM
+      responses:
+        '200':
+          description: Busca avançada realizada com sucesso
+
+  /menuopen:
+    get:
+      summary: Abre o menu principal no portal MKOM
+      responses:
+        '200':
+          description: Menu aberto com sucesso
+
+  /clonar:
+    get:
+      summary: Clona uma campanha no portal MKOM
+      responses:
+        '200':
+          description: Campanha clonada com sucesso
+
+  /Sms:
+    get:
+      summary: Acessa a funcionalidade de SMS no portal MKOM
+      responses:
+        '200':
+          description: Funcionalidade de SMS acessada com sucesso
+
+  /envio:
+    get:
+      summary: Inicia o processo de envio de mensagens no portal MKOM
+      responses:
+        '200':
+          description: Envio iniciado com sucesso
+
+  /lote:
+    get:
+      summary: Seleciona a opção de envio em lote no portal MKOM
+      responses:
+        '200':
+          description: Envio em lote selecionado com sucesso
+
+  /avulso:
+    get:
+      summary: Seleciona a opção de envio avulso no portal MKOM
+      responses:
+        '200':
+          description: Envio avulso selecionado com sucesso
+
+  /fillPhoneNumber:
+    post:
+      summary: Preenche o número de telefone no portal MKOM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: string
+              required:
+                - phoneNumber
+      responses:
+        '200':
+          description: Número de telefone preenchido com sucesso
+
+  /number:
+    get:
+      summary: Preenche informações e realiza ação específica no portal MKOM
+      responses:
+        '200':
+          description: Ação realizada com sucesso
+
+  /atendimento:
+    get:
+      summary: Acessa a funcionalidade de atendimento no portal MKOM
+      responses:
+        '200':
+          description: Funcionalidade de atendimento acessada com sucesso
+
+  /menuClose:
+    get:
+      summary: Fecha o menu principal no portal MKOM
+      responses:
+        '200':
+          description: Menu fechado com sucesso
+
+  /createAttendence:
+    get:
+      summary: Cria um atendimento no portal MKOM
+      responses:
+        '200':
+          description: Atendimento criado com sucesso
+
+  /Cross:
+    get:
+      summary: Realiza ações específicas relacionadas ao Cross no portal MKOM
+      responses:
+        '200':
+          description: Ações do Cross realizadas com sucesso
+
+  /Listbox:
+    get:
+      summary: Seleciona uma opção em uma lista no portal MKOM
+      responses:
+        '200':
+          description: Opção selecionada com sucesso
+
+  /Closeinfo:
+    get:
+      summary: Fecha uma informação específica no portal MKOM
+      responses:
+        '200':
+          description: Informação fechada com sucesso
+
+  /Config:
+    get:
+      summary: Acessa e configura opções de configuração no portal MKOM
+      responses:
+        '200':
+          description: Configurações acessadas e configuradas com sucesso
+
+  /Subject:
+    get:
+      summary: Acessa e configura assuntos no portal MKOM
+      responses:
+        '200':
+          description: Assuntos acessados e configurados com sucesso
+
+  /idsub:
+    get:
+      summary: Preenche e busca informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações preenchidas e buscadas com sucesso
+
+  /ReportPDF:
+    get:
+      summary: Gera um relatório em formato PDF no portal MKOM
+      responses:
+        '200':
+          description: Relatório gerado com sucesso
+
+  /Contact:
+    get:
+      summary: Acessa e interage com dados de contato no portal MKOM
+      responses:
+        '200':
+          description: Dados de contato acessados com sucesso
+
+  /ClickPDFIcon:
+    get:
+      summary: Clica no ícone de PDF no portal MKOM
+      responses:
+        '200':
+          description: Ícone de PDF clicado com sucesso
+
+  /qrcode:
+    get:
+      summary: Acessa e interage com o QR Code no portal MKOM
+      responses:
+        '200':
+          description: QR Code acessado com sucesso
+
+  /Filterlogin:
+    get:
+      summary: Aplica filtro de login no portal MKOM
+      responses:
+        '200':
+          description: Filtro de login aplicado com sucesso
+
+  /reportcampaing:
+    get:
+      summary: Acessa e interage com relatórios de campanhas no portal MKOM
+      responses:
+        '200':
+          description: Relatórios de campanhas acessados com sucesso
+
+  /textid:
+    get:
+      summary: Preenche informações específicas e realiza ações no portal MKOM
+      responses:
+        '200':
+          description: Informações preenchidas e ações realizadas com sucesso
+
+  /sessionstatus:
+    get:
+      summary: Acessa e interage com o status da sessão no portal MKOM
+      responses:
+        '200':
+          description: Status da sessão acessado com sucesso
+
+  /connedit:
+    get:
+      summary: Edita conexões específicas no portal MKOM
+      responses:
+        '200':
+          description: Conexões editadas com sucesso
+
+  /buscar:
+    get:
+      summary: Realiza buscas específicas no portal MKOM
+      responses:
+        '200':
+          description: Buscas realizadas com sucesso
+
+  /btnsucess:
+    get:
+      summary: Clica no botão de sucesso no portal MKOM
+      responses:
+        '200':
+          description: Botão de sucesso clicado com sucesso
+
+  /notification:
+    get:
+      summary: Acessa e interage com notificações no portal MKOM
+      responses:
+        '200':
+          description: Notificações acessadas com sucesso
+
+  /Processo:
+    get:
+      summary: Acessa e interage com processos no portal MKOM
+      responses:
+        '200':
+          description: Processos acessados com sucesso
+
+  /search:
+    get:
+      summary: Realiza busca específica no portal MKOM
+      responses:
+        '200':
+          description: Busca realizada com sucesso
+
+  /procurement:
+    get:
+      summary: Acessa e interage com processos de aquisição no portal MKOM
+      responses:
+        '200':
+          description: Processos de aquisição acessados com sucesso
+
+  /forward:
+    get:
+      summary: Encaminha informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações encaminhadas com sucesso
+
+  /filter:
+    get:
+      summary: Aplica filtro específico no portal MKOM
+      responses:
+        '200':
+          description: Filtro aplicado com sucesso
+
+  /navigation:
+    get:
+      summary: Navega por seções específicas no portal MKOM
+      responses:
+        '200':
+          description: Navegação realizada com sucesso
+
+  /store:
+    get:
+      summary: Armazena informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações armazenadas com sucesso
+
+  /click2:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /user:
+    get:
+      summary: Acessa e interage com informações de usuário no portal MKOM
+      responses:
+        '200':
+          description: Informações de usuário acessadas com sucesso
+
+  /automation:
+    get:
+      summary: Realiza automações específicas no portal MKOM
+      responses:
+        '200':
+          description: Automações realizadas com sucesso
+
+  /cost:
+    get:
+      summary: Acessa e interage com custos no portal MKOM
+      responses:
+        '200':
+          description: Custos acessados com sucesso
+
+  /Controll:
+    get:
+      summary: Controla informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações controladas com sucesso
+
+  /menu:
+    get:
+      summary: Abre o menu no portal MKOM
+      responses:
+        '200':
+          description: Menu aberto com sucesso
+
+  /Register:
+    get:
+      summary: Registra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações registradas com sucesso
+
+  /protocol:
+    get:
+      summary: Acessa e interage com protocolos no portal MKOM
+      responses:
+        '200':
+          description: Protocolos acessados com sucesso
+
+  /searchclose:
+    get:
+      summary: Realiza busca e fecha informações no portal MKOM
+      responses:
+        '200':
+          description: Busca realizada e informações fechadas com sucesso
+
+  /access:
+    get:
+      summary: Acessa informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações acessadas com sucesso
+
+  /click:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /delete:
+    get:
+      summary: Deleta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações deletadas com sucesso
+
+  /connect:
+    get:
+      summary: Conecta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações conectadas com sucesso
+
+  /Sync:
+    get:
+      summary: Sincroniza informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações sincronizadas com sucesso
+
+  /sendmsg:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /select:
+    get:
+      summary: Seleciona opção específica no portal MKOM
+      responses:
+        '200':
+          description: Opção selecionada com sucesso
+
+  /actions:
+    get:
+      summary: Realiza ações específicas no portal MKOM
+      responses:
+        '200':
+          description: Ações realizadas com sucesso
+
+  /receive:
+    get:
+      summary: Recebe informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações recebidas com sucesso
+
+  /task:
+    get:
+      summary: Realiza tarefa específica no portal MKOM
+      responses:
+        '200':
+          description: Tarefa realizada com sucesso
+
+  /activity:
+    get:
+      summary: Acessa e interage com atividades no portal MKOM
+      responses:
+        '200':
+          description: Atividades acessadas com sucesso
+
+  /controle:
+    get:
+      summary: Controla informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações controladas com sucesso
+
+  /clicktable:
+    get:
+      summary: Clica em tabela específica no portal MKOM
+      responses:
+        '200':
+          description: Tabela clicada com sucesso
+
+  /id1:
+    get:
+      summary: Preenche e busca informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações preenchidas e buscadas com sucesso
+
+  /monitor:
+    get:
+      summary: Monitora informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações monitoradas com sucesso
+
+  /action:
+    get:
+      summary: Realiza ações específicas no portal MKOM
+      responses:
+        '200':
+          description: Ações realizadas com sucesso
+
+  /transition:
+    get:
+      summary: Transiciona informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações transicionadas com sucesso
+
+  /email:
+    get:
+      summary: Acessa e interage com emails no portal MKOM
+      responses:
+        '200':
+          description: Emails acessados com sucesso
+
+  /Synccontacts:
+    get:
+      summary: Sincroniza contatos específicos no portal MKOM
+      responses:
+        '200':
+          description: Contatos sincronizados com sucesso
+
+  /clean:
+    get:
+      summary: Limpa informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações limpas com sucesso
+
+  /Cloning:
+    get:
+      summary: Clona informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações clonadas com sucesso
+
+  /end:
+    get:
+      summary: Encerra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações encerradas com sucesso
+
+  /cadastro:
+    get:
+      summary: Realiza cadastro específico no portal MKOM
+      responses:
+        '200':
+          description: Cadastro realizado com sucesso
+
+  /contact1:
+    get:
+      summary: Acessa e interage com contato específico no portal MKOM
+      responses:
+        '200':
+          description: Contato acessado com sucesso
+
+  /clicklink:
+    get:
+      summary: Clica em link específico no portal MKOM
+      responses:
+        '200':
+          description: Link clicado com sucesso
+
+  /out:
+    get:
+      summary: Finaliza informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações finalizadas com sucesso
+
+  /send:
+    get:
+      summary: Envia informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações enviadas com sucesso
+
+  /Registre:
+    get:
+      summary: Registra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações registradas com sucesso
+
+  /organization:
+    get:
+      summary: Acessa e interage com informações de organização no portal MKOM
+      responses:
+        '200':
+          description: Informações de organização acessadas com sucesso
+
+  /sendmessage:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /event:
+    get:
+      summary: Acessa e interage com eventos no portal MKOM
+      responses:
+        '200':
+          description: Eventos acessados com sucesso
+
+  /receive1:
+    get:
+      summary: Recebe informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações recebidas com sucesso
+
+  /clicks:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /message:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /register:
+    get:
+      summary: Registra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações registradas com sucesso
+
+  /Company:
+    get:
+      summary: Acessa e interage com informações de empresa no portal MKOM
+      responses:
+        '200':
+          description: Informações de empresa acessadas com sucesso
+
+  /close:
+    get:
+      summary: Fecha informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações fechadas com sucesso
+
+  /clickandreport:
+    get:
+      summary: Clica e gera relatório específico no portal MKOM
+      responses:
+        '200':
+          description: Clique e relatório gerado com sucesso
+
+  /event1:
+    get:
+      summary: Acessa e interage com evento específico no portal MKOM
+      responses:
+        '200':
+          description: Evento acessado com sucesso
+
+  /sendmessage1:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /register1:
+    get:
+      summary: Registra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações registradas com sucesso
+
+  /company:
+    get:
+      summary: Acessa e interage com informações de empresa no portal MKOM
+      responses:
+        '200':
+          description: Informações de empresa acessadas com sucesso
+
+  /click22:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /delete1:
+    get:
+      summary: Deleta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações deletadas com sucesso
+
+  /connect1:
+    get:
+      summary: Conecta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações conectadas com sucesso
+
+  /sync1:
+    get:
+      summary: Sincroniza informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações sincronizadas com sucesso
+
+  /sendmessage2:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /task1:
+    get:
+      summary: Realiza tarefa específica no portal MKOM
+      responses:
+        '200':
+          description: Tarefa realizada com sucesso
+
+  /activity1:
+    get:
+      summary: Acessa e interage com atividades específicas no portal MKOM
+      responses:
+        '200':
+          description: Atividades acessadas com sucesso
+
+  /clicktable1:
+    get:
+      summary: Clica em tabela específica no portal MKOM
+      responses:
+        '200':
+          description: Tabela clicada com sucesso
+
+  /search2:
+    get:
+      summary: Realiza busca específica no portal MKOM
+      responses:
+        '200':
+          description: Busca realizada com sucesso
+
+  /procurement1:
+    get:
+      summary: Acessa e interage com processos de aquisição no portal MKOM
+      responses:
+        '200':
+          description: Processos de aquisição acessados com sucesso
+
+  /forward1:
+    get:
+      summary: Encaminha informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações encaminhadas com sucesso
+
+  /filter12:
+    get:
+      summary: Aplica filtro específico no portal MKOM
+      responses:
+        '200':
+          description: Filtro aplicado com sucesso
+
+  /navigation1:
+    get:
+      summary: Navega por seções específicas no portal MKOM
+      responses:
+        '200':
+          description: Navegação realizada com sucesso
+
+  /store1:
+    get:
+      summary: Armazena informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações armazenadas com sucesso
+
+  /click3:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /user1:
+    get:
+      summary: Acessa e interage com informações de usuário no portal MKOM
+      responses:
+        '200':
+          description: Informações de usuário acessadas com sucesso
+
+  /automation1:
+    get:
+      summary: Realiza automações específicas no portal MKOM
+      responses:
+        '200':
+          description: Automações realizadas com sucesso
+
+  /cost1:
+    get:
+      summary: Acessa e interage com custos no portal MKOM
+      responses:
+        '200':
+          description: Custos acessados com sucesso
+
+  /control:
+    get:
+      summary: Controla informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações controladas com sucesso
+
+  /menu1:
+    get:
+      summary: Abre o menu no portal MKOM
+      responses:
+        '200':
+          description: Menu aberto com sucesso
+
+  /register2:
+    get:
+      summary: Registra informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações registradas com sucesso
+
+  /protocol1:
+    get:
+      summary: Acessa e interage com protocolos no portal MKOM
+      responses:
+        '200':
+          description: Protocolos acessados com sucesso
+
+  /search3:
+    get:
+      summary: Realiza busca e fecha informações no portal MKOM
+      responses:
+        '200':
+          description: Busca realizada e informações fechadas com sucesso
+
+  /access1:
+    get:
+      summary: Acessa informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações acessadas com sucesso
+
+  /click4:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /delete2:
+    get:
+      summary: Deleta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações deletadas com sucesso
+
+  /connect2:
+    get:
+      summary: Conecta informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações conectadas com sucesso
+
+  /sync2:
+    get:
+      summary: Sincroniza informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações sincronizadas com sucesso
+
+  /sendmessage3:
+    get:
+      summary: Envia mensagem específica no portal MKOM
+      responses:
+        '200':
+          description: Mensagem enviada com sucesso
+
+  /task2:
+    get:
+      summary: Realiza tarefa específica no portal MKOM
+      responses:
+        '200':
+          description: Tarefa realizada com sucesso
+
+  /activity2:
+    get:
+      summary: Acessa e interage com atividades específicas no portal MKOM
+      responses:
+        '200':
+          description: Atividades acessadas com sucesso
+
+  /clicktable2:
+    get:
+      summary: Clica em tabela específica no portal MKOM
+      responses:
+        '200':
+          description: Tabela clicada com sucesso
+
+  /search4:
+    get:
+      summary: Realiza busca específica no portal MKOM
+      responses:
+        '200':
+          description: Busca realizada com sucesso
+
+  /procurement2:
+    get:
+      summary: Acessa e interage com processos de aquisição no portal MKOM
+      responses:
+        '200':
+          description: Processos de aquisição acessados com sucesso
+
+  /forward2:
+    get:
+      summary: Encaminha informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações encaminhadas com sucesso
+
+  /filter2:
+    get:
+      summary: Aplica filtro específico no portal MKOM
+      responses:
+        '200':
+          description: Filtro aplicado com sucesso
+
+  /navigation2:
+    get:
+      summary: Navega por seções específicas no portal MKOM
+      responses:
+        '200':
+          description: Navegação realizada com sucesso
+
+  /store2:
+    get:
+      summary: Armazena informações específicas no portal MKOM
+      responses:
+        '200':
+          description: Informações armazenadas com sucesso
+
+  /click5:
+    get:
+      summary: Clica em elemento específico no portal MKOM
+      responses:
+        '200':
+          description: Elemento clicado com sucesso
+
+  /user2:
+    get:
+      summary: Acessa e interage com informações de usuário no portal MKOM
+      responses:
+        '200':
+          description: Informações de usuário acessadas com sucesso
+
+  /automation2:
+    get:
+      summary: Realiza automações específicas no portal MKOM
+      responses:
+        '200':
+          description: Automações realizadas com sucesso
