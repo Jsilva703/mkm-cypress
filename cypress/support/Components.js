@@ -57,6 +57,13 @@ Cypress.Commands.add('N1',() => {
     cy.get('@N1').should('exist').click();
 })
 
+Cypress.Commands.add('configg', () => {
+
+    cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]').should('be.visible').click();
+    cy.wait(4000)
+    cy.get('[data-tour="configuração"] > .MuiStack-root').click({force:tru})
+})
+
 Cypress.Commands.add('menuCentrocc', () => {
 
     cy.wait(2000);
@@ -150,6 +157,11 @@ Cypress.Commands.add('envio',() => {
     })
 })
 
+Cypress.Commands.add('lote',() => {
+
+    cy.contains('Envio em Lote').should('exist').click({force:true})
+}),
+
 Cypress.Commands.add('avulso',() => {
     cy.contains('Envio Avulso').should('exist', {timeout:2000}).click();
 })
@@ -209,8 +221,8 @@ Cypress.Commands.add('Listbox', () => {
 
     cy.get('div[role="combobox"]').eq(0).click(); 
     cy.wait(1000);
-    cy.contains('li', '9912').click(); // Selecionar a conexão para criar o atendimento passando o ID
-    cy.wait(1000);
+    //cy.contains('li', '9912').click(); // Selecionar a conexão para criar o atendimento passando o ID
+    //cy.wait(1000);
     // Verifica se o campo de texto existe e insere um conteúdo
     cy.get('textarea[name="channel_session.content"]')
     .should('exist')
@@ -413,8 +425,7 @@ Cypress.Commands.add('choosedate', () => {
     //.click()
     //cy.get('div[aria-label="Choose date"] button').click({force: true})
 })
-
-Cypress.Commands.add('Contact', () => { 
+Cypress.Commands.add('ContactGestão', () => { 
     
     
     cy.contains('.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-1ti72ph', 'Contatos', { timeout: 0 }).then($el => {

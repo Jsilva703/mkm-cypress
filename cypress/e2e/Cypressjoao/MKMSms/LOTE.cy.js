@@ -1,6 +1,6 @@
 import '../../../support/Components'
 
-describe('Edit Connection', () => {
+describe('Envio lote', () => {
 
     before(() => {
         cy.visitarURL();   
@@ -9,8 +9,15 @@ describe('Edit Connection', () => {
     });
 
     beforeEach(() => {
-        
+       
         cy.closeTour();    
     });
 
-})
+    it('Edit Connection', () => {
+        
+        cy.mapearCenters(); 
+        cy.N1(); 
+        cy.Sms();          
+
+        });
+});

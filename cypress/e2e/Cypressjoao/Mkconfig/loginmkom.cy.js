@@ -8,7 +8,7 @@ describe('Filter Login', () => {
         cy.API();
         cy.closeTour();
         cy.mapearCenters();
-        cy.N4();
+        cy.configg();
         cy.menuopen();
         cy.Filterlogin();
         

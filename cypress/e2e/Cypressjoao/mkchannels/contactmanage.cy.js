@@ -20,7 +20,7 @@ describe('Edit Connection', () => {
         // O passo a ser seguido para realizar a edição da conexão
         cy.N2();           // N2 na documentação indica o channels
         cy.menuopen();     // Abre o menu
-        cy.Contact();
+        cy.ContactGestão();
         cy.buscar();
     });
 });
