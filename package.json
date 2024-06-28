@@ -24,7 +24,9 @@
     "cypress": "^13.11.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
-    "cypress-real-events": "^1.12.0"
+    "cypress-real-events": "^1.12.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
   },
   "repository": "git@github.com:Joao848846/mkm-cypress.git",
   "resolutions": {
