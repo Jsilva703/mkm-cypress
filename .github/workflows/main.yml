@@ -1,10 +1,9 @@
-name: Run Cypress Tests for Each Mode
+name: Run Cypress Tests for MODO1, MODO2, MODO3
 
 on:
-    workflow_dispatch:  # Permite iniciar manualmente
-    schedule:
-      - cron: '0 16 * * 1,4' # Executaàs 16:00 UTC (13:00 BRT) segunda e quinta
-
+  workflow_dispatch:  # Permite iniciar manualmente
+  schedule:
+    - cron: '0 16 * * 1,4' # Executaàs 16:00 UTC (13:00 BRT) segunda e quinta
 
 jobs:
   cypress-run:
@@ -18,30 +17,23 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2  # Ação para fazer o checkout do código
+        uses: actions/checkout@v2
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Versão do Node.js que deseja usar
+          node-version: '14'
 
       - name: Install Dependencies
-        run: npm install  # Instalar as dependências do Node.js
+        run: yarn install
 
       - name: Run Cypress Tests for ${{ matrix.mode }}
-        run: |
-          npm run cypress:run -- --spec "cypress/e2e/Cypressjoao/MkWhatsOne/${{ matrix.mode }}.cy.js"
-        working-directory: ${{ github.workspace }}  # Define o diretório de trabalho
+        run: yarn spec "cypress/e2e/Cypressjoao/MkWhatsOne/${{ matrix.mode }}.cy.js"
+        working-directory: ${{ github.workspace }}
 
-      - name: Upload Cypress Artifacts
+      - name: Upload Cypress Artifacts for ${{ matrix.mode }}
         uses: actions/upload-artifact@v2
         with:
-          name: cypress-screenshots-${{ matrix.mode }}
-          path: cypress/screenshots  # Caminho dos screenshots do Cypress
-
-      - name: Upload Cypress Videos
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-videos-${{ matrix.mode }}
-          path: cypress/videos  # Caminho dos vídeos do Cypress
+          name: cypress-artifacts-${{ matrix.mode }}
+          path: cypress/screenshots, cypress/videos
 
