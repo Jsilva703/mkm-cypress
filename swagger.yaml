@@ -52,10 +52,51 @@ paths:
 
   /mapearCenters:
     get:
-      summary: Mapeia os centros de custo no portal MKOM
+      summary: Retorna detalhes de um centro específico na interface do portal MKOM
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do centro a ser retornado (N1, N2 ou N3)
       responses:
         '200':
-          description: Centros de custo mapeados com sucesso
+          description: Retorna os detalhes do centro com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: ID do centro
+                  details:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Nome do centro
+                      location:
+                        type: string
+                        description: Localização do centro
+      x-cypress:
+        commands:
+          - name: mapearCenters
+            description: Mapeia centros específicos na interface do portal MKOM
+            request:
+              url: '/mapearCenters/{id}'
+              method: GET
+              parameters:
+                - name: id
+                  value: '{id}'  # O valor do ID será substituído dinamicamente pelo Cypress
+            responses:
+              200:
+                description: Retorna os detalhes do centro com sucesso
+            cypressCommands:
+              - cy.get(':nth-child(1) > center > .paper-lobby').as('N1');
+              - cy.get(':nth-child(2) > center > .paper-lobby').as('N2');
+              - cy.get(':nth-child(3) > center > .paper-lobby').as('N3');
 
   /N1:
     get:
