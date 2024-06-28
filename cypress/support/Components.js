@@ -61,7 +61,7 @@ Cypress.Commands.add('configg', () => {
 
     cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]').should('be.visible').click();
     cy.wait(4000)
-    cy.get('[data-tour="configuração"] > .MuiStack-root').click({force:tru})
+    cy.get('[data-tour="configuração"] > .MuiStack-root').click({force:true})
 })
 
 Cypress.Commands.add('menuCentrocc', () => {
