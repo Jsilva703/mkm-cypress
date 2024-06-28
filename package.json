@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cypress open",
     "teste": "cypress run",
+    "build": "webpack --config webpack.config.js",
     "spec": "cypress run --spec",
     "start": "node server.js"
   },
