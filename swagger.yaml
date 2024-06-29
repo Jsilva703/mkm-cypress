@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Comandos Cypress para Portal MKOM
-  description: Documentação dos comandos Cypress para interação com o portal MKOM
+  title: Comandos Cypress 
+  description: Documentação dos comandos Cypress 
   version: 1.0.0
 
 paths:
