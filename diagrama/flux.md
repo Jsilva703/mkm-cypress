@@ -1,27 +1,55 @@
 graph TD
-    A[mkm-cypress] --> B[cypress]
-    B --> C[downloads]
-    B --> D[e2e]
-    D --> E[Cypressjoao]
-    E --> F[mkchannels]
-    E --> G[Mkconfig]
-    E --> H[MKMSms]
-    E --> I[MkWhatsOne]
-    B --> J[fixtures]
-    B --> K[plugins]
-    B --> L[reports]
-    B --> M[screenshots]
-    B --> N[support]
-    B --> O[videos]
-    A --> P[cypress.config.js]
-    A --> Q[docker-compose.yml]
-    A --> R[Dockerfile]
-    A --> S[LICENSE]
-    A --> T[linux_amd64.tar.gz]
-    A --> U[node_modules]
-    A --> V[package.json]
-    A --> W[README.md]
-    A --> X[redoc-static.html]
-    A --> Y[server.js]
-    A --> Z[swagger.yaml]
-    A --> AA[yarn.lock]
+    A[mkm-cypress]
+    B[cypress]
+    C[downloads]
+    D[e2e]
+    E[fixtures]
+    F[plugins]
+    G[reports]
+    H[screenshots]
+    I[support]
+    J[videos]
+    K[cypress.config.js]
+    L[docker-compose.yml]
+    M[Dockerfile]
+    N[LICENSE]
+    O[linux_amd64.tar.gz]
+    P[node_modules]
+    Q[package.json]
+    R[README.md]
+    S[redoc-static.html]
+    T[server.js]
+    U[swagger.yaml]
+    V[yarn.lock]
+    W[Cypressjoao]
+    X[mkchannels]
+    Y[Mkconfig]
+    Z[MKMSms]
+    AA[MkWhatsOne]
+
+    A --> B
+    B --> C
+    B --> D
+    D --> W
+    W --> X
+    W --> Y
+    W --> Z
+    W --> AA
+    B --> E
+    B --> F
+    B --> G
+    B --> H
+    B --> I
+    B --> J
+    A --> K
+    A --> L
+    A --> M
+    A --> N
+    A --> O
+    A --> P
+    A --> Q
+    A --> R
+    A --> S
+    A --> T
+    A --> U
+    A --> V
