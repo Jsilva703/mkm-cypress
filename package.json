@@ -17,7 +17,8 @@
     "axios": "^1.7.2",
     "cypress-sonarqube-reporter": "^1.13.0",
     "dotenv": "^16.4.5",
-    "fast-xml-parser": "^4.4.0"
+    "fast-xml-parser": "^4.4.0",
+    "mocha": "^10.5.2"
   },
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
