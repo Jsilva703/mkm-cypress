@@ -160,6 +160,18 @@ Cypress.Commands.add('envio',() => {
 Cypress.Commands.add('lote',() => {
 
     cy.contains('Envio em Lote').should('exist').click({force:true})
+    cy.get('svg[data-testid="FolderOpenOutlinedIcon"]').click(); //seletor do upload de arquivo
+    cy.wait(3000)
+    const filePath = 'testeone11111 (2).csv'; // arquivo que iremos fazer o upload
+    cy.get('input[type="file"]').attachFile(filePath);
+    cy.wait(3000)
+    cy.get('input[name="dcrmlg"]').type('Envio via cypress', {delay: 100})
+    cy.get('div[role="combobox"]')
+    .contains('Selecione')
+    .click({force: true});
+    cy.get('li').contains('Cypress').click(); // fazendo um get nos itens da lista a partir do combobox selecionado acima 
+    
+    
 }),
 
 Cypress.Commands.add('avulso',() => {
