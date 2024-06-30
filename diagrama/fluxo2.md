@@ -1,10 +1,19 @@
 ```mermaid
 flowchart TD
+    %% Root Node
     A["mkm-cypress"]
-    
-    %% Subgroup Cypress
+
+    %% Cypress Node and its Subcomponents
     subgraph Cypress["cypress"]
         direction TB
+        C1["e2e"]
+        subgraph Cypressjoao["Cypressjoao"]
+            direction TB
+            mkchannels["mkchannels"]
+            Mkconfig["Mkconfig"]
+            MKMSms["MKMSms"]
+            MkWhatsOne["MkWhatsOne"]
+        end
         E["downloads"]
         F["fixtures"]
         G["plugins"]
@@ -12,24 +21,16 @@ flowchart TD
         I["screenshots"]
         J["support"]
         K["videos"]
-        C["e2e"]
-        D["Cypressjoao"]
-            subgraph Cypressjoao["Módulos"]
-                mkchannels["mkchannels"]
-                Mkconfig["Mkconfig"]
-                MKMSms["MKMSms"]
-                MkWhatsOne["MkWhatsOne"]
-            end
     end
 
-    %% Subgroup Config Files
+    %% Configuration Files
     subgraph ConfigFiles["Config Files"]
         direction TB
         L["docker-compose.yml"]
         M["Dockerfile"]
     end
 
-    %% Subgroup Project Files
+    %% Project Files
     subgraph ProjectFiles["Project Files"]
         direction TB
         N["node_modules"]
@@ -41,32 +42,24 @@ flowchart TD
         T["server.js"]
         U["linux_amd64.tar.gz"]
     end
-    
-    %% Connections
-    A --> Cypress
+
+    %% Connections between sections
+    A --> B["cypress"]
     A --> ConfigFiles
     A --> ProjectFiles
-    
-    Cypress --> E
-    Cypress --> F
-    Cypress --> G
-    Cypress --> H
-    Cypress --> I
-    Cypress --> J
-    Cypress --> K
-    Cypress --> C
-    C --> D
-    D --> mkchannels
-    D --> Mkconfig
-    D --> MKMSms
-    D --> MkWhatsOne
 
-%% Node styles
-    style A fill:#f3f4f6,stroke:#333,stroke-width:2px
-    style E,F,G,H,I,J,K,C,D fill:#ffffff,stroke:#3182bd,stroke-width:2px
-    style L,M fill:#ffffff,stroke:#3182bd,stroke-width:2px
-    style N,O,P,Q,R,S,T,U fill:#ffffff,stroke:#3182bd,stroke-width:2px
-    style Cypress fill:#e3f7ff,stroke:#333,stroke-width:2px
-    style ConfigFiles fill:#e3ffe3,stroke:#333,stroke-width:2px
-    style ProjectFiles fill:#fff7e3,stroke:#333,stroke-width:2px
-    style Cypressjoao fill:#f3f7ff,stroke:#333,stroke-width:2px
+    %% Connections inside Cypress
+    B --> E
+    B --> F
+    B --> G
+    B --> H
+    B --> I
+    B --> J
+    B --> K
+    B --> C1 --> Cypressjoao
+
+    %% Files inside Cypressjoao
+    Cypressjoao --> mkchannels
+    Cypressjoao --> Mkconfig
+    Cypressjoao --> MKMSms
+    Cypressjoao --> MkWhatsOne
