@@ -170,7 +170,8 @@ Cypress.Commands.add('lote',() => {
     .contains('Selecione')
     .click({force: true});
     cy.get('li').contains('Cypress').click(); // fazendo um get nos itens da lista a partir do combobox selecionado acima 
-    
+    cy.wait(3000);
+    //cy.get('.MuiDialogActions-root > :nth-child(2)').click();
     
 }),
 
