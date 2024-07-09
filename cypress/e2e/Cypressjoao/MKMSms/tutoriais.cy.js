@@ -1,5 +1,4 @@
 import "../../../support/Components";
-import "cypress-file-upload";
 
 describe("Envio lote", () => {
   before(() => {
@@ -15,8 +14,7 @@ describe("Envio lote", () => {
   it("Edit Connection", () => {
     cy.mapearCenters();
     cy.N1();
-    cy.Sms();
-    cy.envio();
-    cy.lote();
+    cy.menuopen();
+    cy.tutoriais();
   });
 });

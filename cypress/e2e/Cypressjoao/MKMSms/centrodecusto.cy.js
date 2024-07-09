@@ -1,7 +1,6 @@
 import "../../../support/Components";
-import "cypress-file-upload";
 
-describe("Envio lote", () => {
+describe("Alterar centro de custo", () => {
   before(() => {
     cy.visitarURL();
     cy.LoginCypress();
@@ -12,11 +11,12 @@ describe("Envio lote", () => {
     cy.closeTour();
   });
 
-  it("Edit Connection", () => {
+  it("Alterar centro de custo", () => {
     cy.mapearCenters();
     cy.N1();
-    cy.Sms();
-    cy.envio();
-    cy.lote();
+    cy.menuopen();
+    cy.custo();
+    cy.wait(2000);
+    cy.menuClose();
   });
 });
