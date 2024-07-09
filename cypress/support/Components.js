@@ -157,6 +157,8 @@ Cypress.Commands.add("lote", () => {
   cy.get('div[role="combobox"]').contains("Selecione").click({ force: true });
   cy.get("li").contains("Cypress").click(); // fazendo um get nos itens da lista a partir do combobox selecionado acima
   cy.wait(3000);
+  cy.contains('Próximo').should('be.visible').click();
+  cy.contains('Enviar').should('be.visible').click();
   //cy.get('.MuiDialogActions-root > :nth-child(2)').click();
 }),
   Cypress.Commands.add("avulso", () => {
@@ -208,8 +210,8 @@ Cypress.Commands.add("Cross", () => {
 Cypress.Commands.add("Listbox", () => {
   cy.get('div[role="combobox"]').eq(0).click();
   cy.wait(1000);
-  //cy.contains('li', '9912').click(); // Selecionar a conexão para criar o atendimento passando o ID
-  //cy.wait(1000);
+  cy.contains("li", "9912").click(); // Selecionar a conexão para criar o atendimento passando o ID
+  cy.wait(1000);
   // Verifica se o campo de texto existe e insere um conteúdo
   cy.get('textarea[name="channel_session.content"]')
     .should("exist")
