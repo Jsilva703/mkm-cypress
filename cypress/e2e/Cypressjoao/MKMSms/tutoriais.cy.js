@@ -1,6 +1,6 @@
 import "../../../support/Components";
 
-describe("Envio lote", () => {
+describe("Tutorial", () => {
   before(() => {
     cy.visitarURL();
     cy.LoginCypress();

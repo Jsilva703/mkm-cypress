@@ -1,4 +1,4 @@
-describe("MODO 2 API", () => {
+describe("MODO 3 API", () => {
   it("Executar envio da campanha", () => {
     const dataAtual = new Date();
     const dataFormatada = dataAtual.toISOString();

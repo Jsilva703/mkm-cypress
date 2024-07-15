@@ -2,7 +2,6 @@ cypress/downloads
 cypress/video/
 cypress/screenshots/
 cypress/env/
-cypress/fixtures/
 cypress/reports/
 cypress/redoc-static.html
 
