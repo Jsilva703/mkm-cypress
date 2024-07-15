@@ -1,29 +1,11 @@
 ```mermaid
 flowchart TD
-    mkm-cypress[mkm-cypress]
-    mkm-cypress --> cypress[cypress]
-    cypress --> downloads[downloads]
-    cypress --> e2e[e2e]
-    e2e --> Cypressjoao[Cypressjoao]
-    Cypressjoao --> mkchannels[mkchannels]
-    Cypressjoao --> Mkconfig[Mkconfig]
-    Cypressjoao --> MKMSms[MKMSms]
-    Cypressjoao --> MkWhatsOne[MkWhatsOne]
-    cypress --> fixtures[fixtures]
-    cypress --> plugins[plugins]
-    cypress --> reports[reports]
-    cypress --> screenshots[screenshots]
-    cypress --> support[support]
-    cypress --> videos[videos]
-    mkm-cypress --> cypressconfig[cypress.config.js]
-    mkm-cypress --> dockercompose[docker-compose.yml]
-    mkm-cypress --> Dockerfile[Dockerfile]
-    mkm-cypress -->  LICENSE[LICENSE]
-    mkm-cypress --> linuxamd64[linux_amd64.tar.gz]
-    mkm-cypress --> nodemodules[node_modules]
-    mkm-cypress -->  packagejson[package.json]
-    mkm-cypress --> README[README.md]
-    mkm-cypress --> redocstatic[redoc-static.html]
-    mkm-cypress --> serverjs[server.js]
-    mkm-cypress --> swaggeryaml[swagger.yaml]
-    mkm-cypress --> yarnlock[yarn.lock]
+    mkm-cypress(("mkm-cypress")) --> cypress{"cypress"} & API["API"] & cypressconfig(["cypress.config.js"]) & Docker(["Docker"]) & packagejson(["package.json"]) & swaggeryaml(["swagger.yaml"]) & yarnlock(["yarn.lock"])
+    API --> server.js(["server.js"])
+    Docker --> dockercompose(["docker compose"]) & DockerFile(["Docker File"])
+    cypress --> downloads(["downloads"]) & e2e(["e2e"]) & fixtures(["fixtures"]) & plugins(["plugins"]) & reports(["reports"]) & screenshots(["screenshots"]) & support(["support"]) & videos(["videos"])
+    e2e --> Cypressjoao(["Cypressjoao"])
+    Cypressjoao --> mkchannels("mkchannels") & Mkconfig("Mkconfig") & MKMSms("MKMSms") & MkWhatsOne("MkWhatsOne")
+    support --> channels["channels.js"] & one["one.js"] & sms["sms.js"] & config["config.js"]
+    style mkm-cypress fill:#000000,stroke:#FFFFFF
+    style cypress stroke:#2962FF
