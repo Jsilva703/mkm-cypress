@@ -31,11 +31,28 @@ Cypress.Commands.add("API", () => {
 });
 
 Cypress.Commands.add("closeTour", () => {
-  cy.wait(2000);
+  cy.wait(2000); // Aguarda 2 segundos para garantir que a página carregue
 
-  // Fazer a busca pelo elemento "close"
-  cy.get(".material-icons").contains("close").click();
+  // Tenta encontrar o elemento .material-icons
+  cy.get('body').then(($body) => {
+    if ($body.find('.material-icons').length > 0) {
+      cy.get('.material-icons').then(($el) => {
+        if ($el.is(':visible')) {
+          // Se o elemento está visível, clica nele
+          cy.wrap($el).click();
+        } else {
+          // Se o elemento não está visível, segue o fluxo
+          cy.log('Elemento não está visível, seguindo o fluxo...');
+        }
+      });
+    } else {
+      // Caso o elemento não seja encontrado, segue o fluxo
+      cy.log('Elemento .material-icons não encontrado, seguindo o fluxo...');
+    }
+  });
 });
+
+
 
 Cypress.Commands.add("mapearCenters", () => {
   cy.get(":nth-child(1) > center > .paper-lobby").as("N1");
@@ -53,7 +70,7 @@ Cypress.Commands.add("N1", () => {
   cy.get("@N1").should("exist").click();
 });
 
-Cypress.Commands.add("configg", () => {
+Cypress.Commands.add("configg", () => { // comando do channels
   cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]')
     .should("be.visible")
     .click();
@@ -181,7 +198,7 @@ Cypress.Commands.add("number", () => {
   cy.get(".MuiDialogActions-root > :nth-child(2)").click();
 });
 
-Cypress.Commands.add("atendimento", () => {
+Cypress.Commands.add("atendimento", () => { //comando do channels
   cy.wait(5000);
   cy.contains("Atendimento").should("exist").click();
 });
@@ -192,7 +209,7 @@ Cypress.Commands.add("menuClose", () => {
   cy.wait(3000);
 });
 
-Cypress.Commands.add("createAttendence", () => {
+Cypress.Commands.add("createAttendence", () => { // comando do channels
   cy.get("#atendimento").should("exist").click();
 });
 
@@ -267,7 +284,7 @@ Cypress.Commands.add("idsub", () => {
   cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
 });
 
-Cypress.Commands.add("ReportPDF", () => {
+Cypress.Commands.add("ReportPDF", () => { // comando do channels
   cy.contains("Painel de Gestão").should("exist").click();
   cy.wait(5000);
   cy.contains("button", "Fila de Espera").should("be.visible").click();
@@ -277,7 +294,7 @@ Cypress.Commands.add("ReportPDF", () => {
   ).click({ force: true });
 });
 
-Cypress.Commands.add("Contact", () => {
+Cypress.Commands.add("Contact", () => { // comando do channels
   cy.get(".MuiAccordionSummary-content")
     .contains("h4", "Dados do Contato")
     .should("be.visible")
@@ -347,7 +364,7 @@ Cypress.Commands.add("textid", () => {
   cy.get('[data-tour="downloadCampanha"]').click({ force: true });
 });
 
-Cypress.Commands.add("sessionstatus", () => {
+Cypress.Commands.add("sessionstatus", () => { // comando do channels
   cy.contains("Status da Sessão").should("be.visible").click({ force: true });
   cy.get('input[name="name"]').should("exist").type("Teste Cypress");
   cy.wait(3000);
