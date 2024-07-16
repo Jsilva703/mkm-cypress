@@ -1,4 +1,6 @@
 import "../../../support/Components";
+import '../../../support/sms'
+
 
 describe("Tutorial", () => {
   before(() => {

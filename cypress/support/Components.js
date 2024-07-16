@@ -70,14 +70,6 @@ Cypress.Commands.add("N1", () => {
   cy.get("@N1").should("exist").click();
 });
 
-Cypress.Commands.add("configg", () => { // comando do channels
-  cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]')
-    .should("be.visible")
-    .click();
-  cy.wait(4000);
-  cy.get('[data-tour="configuração"] > .MuiStack-root').click({ force: true });
-});
-
 Cypress.Commands.add("menuCentrocc", () => {
   cy.wait(2000);
   cy.get('div[data-tour="Centro de Custos"]')
@@ -106,96 +98,14 @@ Cypress.Commands.add("limite", () => {
   cy.contains("Salvar").click();
 });
 
-Cypress.Commands.add("block", () => {
-  cy.wait(1000);
-  cy.get('div[data-tour="Blocklist"]').should("exist").click({ force: true });
-  cy.wait(1000);
-  cy.get(".MuiOutlinedInput-input").type("11912778807", { delay: 1000 });
-  cy.get('button[aria-label="Buscar"][type="button"]').click();
-});
-
-Cypress.Commands.add("campanha", () => {
-  cy.wait(1000);
-  cy.contains("Campanha").should("exist").click({ force: true });
-});
-
-Cypress.Commands.add("avançada", () => {
-  cy.get('button[aria-label="Busca Avançada"]').click();
-  cy.contains("Busca Avançada").should("exist");
-  cy.wait(1000);
-  cy.get('input[name="_id"]').type("10427", { delay: 100 });
-  cy.contains("Buscar").click({ force: true }, { timeout: 1000 });
-  cy.get(
-    '.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-1yxmbwk[variant="contained"]'
-  ).as("moreVertButton");
-  cy.wait(1000);
-  cy.get("@moreVertButton").click();
-});
-
 Cypress.Commands.add("menuopen", () => {
   cy.wait(1000);
   cy.get('span.material-icons[data-tour="menuOpen"]').click();
   cy.wait(1000);
 });
 
-Cypress.Commands.add("clonar", () => {
-  cy.get('button[aria-label="Clonar esta campanha"]').then(($el) => {
-    cy.wrap($el).click();
-  });
-
-  for (let i = 0; i < 6; i++) {
-    cy.get("button.MuiButton-containedSecondary").click({ multiple: true });
-    cy.wait(1000); // Espera 1 segundo antes de clicar novamente
-  }
-});
-
-Cypress.Commands.add("Sms", () => {
-  cy.wait(2000);
-  cy.get('div[data-tour="Monitoramento"]')
-    .should("exist")
-    .click({ force: true });
-  cy.wait(1000);
-});
-
-Cypress.Commands.add("envio", () => {
-  cy.get('span.material-icons[data-tour="addEnvios').then(($el) => {
-    cy.wrap($el).click();
-  });
-});
-
-Cypress.Commands.add("lote", () => {
-  cy.contains("Envio em Lote").should("exist").click({ force: true });
-  cy.get('svg[data-testid="FolderOpenOutlinedIcon"]').click(); //seletor do upload de arquivo
-  cy.wait(3000);
-  const filePath = "testeone11111 (2).csv"; // arquivo que iremos fazer o upload
-  cy.get('input[type="file"]').attachFile(filePath);
-  cy.wait(3000);
-  cy.get('input[name="dcrmlg"]').type("Envio via cypress", { delay: 100 });
-  cy.get('div[role="combobox"]').contains("Selecione").click({ force: true });
-  cy.get("li").contains("Cypress").click(); // fazendo um get nos itens da lista a partir do combobox selecionado acima
-  cy.wait(3000);
-  cy.contains('Próximo').should('be.visible').click();
-  cy.contains('Enviar').should('be.visible').click();
-  //cy.get('.MuiDialogActions-root > :nth-child(2)').click();
-}),
-  Cypress.Commands.add("avulso", () => {
-    cy.contains("Envio Avulso").should("exist", { timeout: 2000 }).click();
-  });
-
 Cypress.Commands.add("fillPhoneNumber", (phoneNumber) => {
   cy.get('textarea[name="mailling_dados_phones"]').type(phoneNumber);
-});
-
-Cypress.Commands.add("number", () => {
-  cy.fillPhoneNumber("11911031972");
-  cy.wait(1000);
-  //cy.get('div[role="combobox"][aria-labelledby=":r11:-label :r11:"]').click();
-  ///cy.contains('Cypress').should('exist').click();
-  cy.get('div[role="combobox"]').eq(1).click();
-  cy.wait(1000);
-  cy.contains("li", "Cypress").click();
-  cy.wait(5000);
-  cy.get(".MuiDialogActions-root > :nth-child(2)").click();
 });
 
 Cypress.Commands.add("atendimento", () => { //comando do channels
@@ -317,53 +227,6 @@ Cypress.Commands.add("ClickPDFIcon", () => {
     .click({ force: true }); // Força o clique mesmo que o elemento não esteja em um estado interativo usual
 });
 
-Cypress.Commands.add("qrcode", () => {
-  // cy.contains('Conexões').should('be.visible').click({force:true})
-  // cy.url().should('include', '/connections');
-
-  //cy.wait(2000)
-  // cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
-  //cy.get('.PrivateSwitchBase-input').then('exist', 'Streaming(QRCODE)').click();
-  // cy.get('[href="https://portal.mkom.tec.br/mkconfig/#/connections"]')
-  //.should('exist', 'WhatsApp').click();
-
-  cy.get('[data-tour="Conexões"]').should("be.visible");
-  cy.wait(1000);
-  cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
-  cy.get('[href="https://portal.mkom.tec.br/mkconfig/#/connections/whatsapp"]')
-    .should("exist", "WhatsApp")
-    .click();
-  cy.wait(2000);
-  cy.contains("Streaming(QR Code)").should("be.visible").click();
-  cy.url().should(
-    "eq",
-    "https://portal.mkom.tec.br/mkconfig/#/connections/streaming"
-  );
-});
-
-Cypress.Commands.add("Filterlogin", () => {
-  cy.contains("Logins").should("be.visible").click({ force: true });
-  cy.wait(2000);
-  cy.get('input[name="codlgn"]').should("exist").type(18422, { delay: 100 });
-  cy.get('button[name="search"]').click();
-});
-
-Cypress.Commands.add("reportcampaing", () => {
-  cy.contains("Campanha").should("be.visible").click({ force: true });
-  cy.wait(5000);
-  cy.get('span.material-icons[data-tour="menuClose"]').click();
-  cy.wait(2000);
-  cy.get('button[aria-label="Busca Avançada"]')
-    .should("be.visible")
-    .click({ force: true });
-});
-
-Cypress.Commands.add("textid", () => {
-  cy.get('input[name="_id"]').should("be.visible").type("11240");
-  cy.contains("Buscar").click({ force: true }, { timeout: 1000 });
-  cy.get('[data-tour="downloadCampanha"]').click({ force: true });
-});
-
 Cypress.Commands.add("sessionstatus", () => { // comando do channels
   cy.contains("Status da Sessão").should("be.visible").click({ force: true });
   cy.get('input[name="name"]').should("exist").type("Teste Cypress");
@@ -435,17 +298,4 @@ Cypress.Commands.add("ContactGestão", () => {
   cy.get('input[name="name"]')
     .should("be.visible")
     .type("João Victor", { delay: 100 });
-});
-
-Cypress.Commands.add("tutoriais", () => {
-  cy.contains("Tutoriais").should("be.visible").click({ force: true });
-});
-
-Cypress.Commands.add("custo", () => {
-  // centro de custo do sms
-  cy.contains("Centros de Custo").should("be.visible").click({ force: true });
-  cy.get('input[name="codcc"]')
-    .should("be.visible")
-    .type("18861", { delay: 100 });
-  cy.get('button[aria-label="Buscar"][type="button"]').click();
 });

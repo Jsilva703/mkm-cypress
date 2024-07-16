@@ -1,5 +1,6 @@
 
 import './../../../support/Components'
+import './../../../support/config'
 
 describe('Streaming QRCODE', () => {
     it('Validation Function ', () => {

@@ -1,4 +1,5 @@
 import './../../../support/Components'
+import '../../../support/one';
 
 describe('Filtro de blocklist' ,() => {
 

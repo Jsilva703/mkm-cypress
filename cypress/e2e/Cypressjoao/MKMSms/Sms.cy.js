@@ -1,5 +1,6 @@
 
-import './../../../support/Components'
+import './../../../support/Components';
+import '../../../support/sms'
 
 describe('SMS-Envio', () => {
 

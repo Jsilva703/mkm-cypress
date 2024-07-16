@@ -1,4 +1,5 @@
 import '../../../support/Components'
+import '../../../support/config'
 
 describe('Filter Login', () => {
     it('Deve fazer login com sucesso', () => {

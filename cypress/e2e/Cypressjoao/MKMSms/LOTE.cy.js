@@ -1,4 +1,5 @@
 import "../../../support/Components";
+import '../../../support/sms'
 import "cypress-file-upload";
 
 describe("Envio lote", () => {

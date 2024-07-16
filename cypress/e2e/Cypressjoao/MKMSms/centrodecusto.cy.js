@@ -1,4 +1,5 @@
 import "../../../support/Components";
+import '../../../support/sms';
 
 describe("Alterar centro de custo", () => {
   before(() => {
