@@ -34,30 +34,28 @@ Cypress.Commands.add("closeTour", () => {
   cy.wait(2000); // Aguarda 2 segundos para garantir que a página carregue
 
   // Tenta encontrar o elemento .material-icons
-  cy.get('body').then(($body) => {
-    if ($body.find('.material-icons').length > 0) {
-      cy.get('.material-icons').then(($el) => {
-        if ($el.is(':visible')) {
+  cy.get("body").then(($body) => {
+    if ($body.find(".material-icons").length > 0) {
+      cy.get(".material-icons").then(($el) => {
+        if ($el.is(":visible")) {
           // Se o elemento está visível, clica nele
           cy.wrap($el).click();
         } else {
           // Se o elemento não está visível, segue o fluxo
-          cy.log('Elemento não está visível, seguindo o fluxo...');
+          cy.log("Elemento não está visível, seguindo o fluxo...");
         }
       });
     } else {
       // Caso o elemento não seja encontrado, segue o fluxo
-      cy.log('Elemento .material-icons não encontrado, seguindo o fluxo...');
+      cy.log("Elemento .material-icons não encontrado, seguindo o fluxo...");
     }
   });
 });
 
-
-
 Cypress.Commands.add("mapearCenters", () => {
-  cy.get(":nth-child(1) > center > .paper-lobby").as("N1");
-  cy.get(":nth-child(2) > center > .paper-lobby").as("N2");
-  cy.get(":nth-child(3) > center > .paper-lobby").as("N3");
+  cy.get(":nth-child(1) > center > .paper-lobby").as("N1"); // MKMSMS
+  cy.get(":nth-child(2) > center > .paper-lobby").as("N2"); // MKCHANNELS
+  cy.get(":nth-child(3) > center > .paper-lobby").as("N3"); // MKWHATSONE
 });
 
 Cypress.Commands.add("N3", () => {
@@ -108,7 +106,8 @@ Cypress.Commands.add("fillPhoneNumber", (phoneNumber) => {
   cy.get('textarea[name="mailling_dados_phones"]').type(phoneNumber);
 });
 
-Cypress.Commands.add("atendimento", () => { //comando do channels
+Cypress.Commands.add("atendimento", () => {
+  //comando do channels
   cy.wait(5000);
   cy.contains("Atendimento").should("exist").click();
 });
@@ -119,7 +118,8 @@ Cypress.Commands.add("menuClose", () => {
   cy.wait(3000);
 });
 
-Cypress.Commands.add("createAttendence", () => { // comando do channels
+Cypress.Commands.add("createAttendence", () => {
+  // comando do channels
   cy.get("#atendimento").should("exist").click();
 });
 
@@ -194,7 +194,8 @@ Cypress.Commands.add("idsub", () => {
   cy.get('input[name="id"]').clear(); // Limpa o campo de texto após clicar no botão de busca
 });
 
-Cypress.Commands.add("ReportPDF", () => { // comando do channels
+Cypress.Commands.add("ReportPDF", () => {
+  // comando do channels
   cy.contains("Painel de Gestão").should("exist").click();
   cy.wait(5000);
   cy.contains("button", "Fila de Espera").should("be.visible").click();
@@ -204,7 +205,8 @@ Cypress.Commands.add("ReportPDF", () => { // comando do channels
   ).click({ force: true });
 });
 
-Cypress.Commands.add("Contact", () => { // comando do channels
+Cypress.Commands.add("Contact", () => {
+  // comando do channels
   cy.get(".MuiAccordionSummary-content")
     .contains("h4", "Dados do Contato")
     .should("be.visible")
@@ -227,7 +229,8 @@ Cypress.Commands.add("ClickPDFIcon", () => {
     .click({ force: true }); // Força o clique mesmo que o elemento não esteja em um estado interativo usual
 });
 
-Cypress.Commands.add("sessionstatus", () => { // comando do channels
+Cypress.Commands.add("sessionstatus", () => {
+  // comando do channels
   cy.contains("Status da Sessão").should("be.visible").click({ force: true });
   cy.get('input[name="name"]').should("exist").type("Teste Cypress");
   cy.wait(3000);
