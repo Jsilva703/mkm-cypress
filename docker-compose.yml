@@ -1,5 +1,4 @@
 version: '3.9'
-
 services:
   cypress:
     build:
@@ -9,8 +8,3 @@ services:
       - .:/e2e
     networks:
       - default
-    entrypoint: ["cypress", "run"]
-
-networks:
-  default:
-    driver: bridge
