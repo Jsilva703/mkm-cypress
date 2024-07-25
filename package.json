@@ -9,6 +9,7 @@
     "teste": "cypress run",
     "spec": "cypress run --spec",
     "lint": "eslint .",
+    "test:unit:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "start": "node server.js"
   },
   "keywords": [],
