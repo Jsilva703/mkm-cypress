@@ -50,10 +50,12 @@ jobs:
           browser: ${{ matrix.browser }}
           record: true
           parallel: true
-          group: "UI - ${{ matrix.browser }}$([[ matrix.viewport == 'mobile' ]] ? ' - Mobile' : '')"
+          group: "UI - ${{ matrix.browser }}${{ matrix.viewport == 'mobile' && ' - Mobile' || '' }}"
           spec: cypress/tests/ui/*
           config-file: cypress.config.ts
           config: ${{ matrix.viewport == 'mobile' && '{"e2e":{"viewportWidth":375,"viewportHeight":667}}' || '{}' }}
+          publish-summary: true
+          component: false
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
