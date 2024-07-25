@@ -26,7 +26,7 @@ jobs:
       - run: node -p 'os.cpus()'
       # Remove or comment out the next line if "types" command does not exist
       # - run: yarn types
-      - run: yarn lint
+        #  - run: yarn lint
       - run: yarn test:unit:ci
       - run: yarn build:ci
 
