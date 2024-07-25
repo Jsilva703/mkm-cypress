@@ -15,18 +15,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress install
+      - name: Install Cypress
         uses: cypress-io/github-action@v6
         with:
           runTests: false
 
-      # report machine parameters
+      # Report machine parameters
       - run: yarn cypress info
       - run: node --version
       - run: node -p 'os.cpus()'
-      # Remove or comment out the next line if "types" command does not exist
+      # Remove or comment out the next lines if the commands do not exist
       # - run: yarn types
-        #  - run: yarn lint
+      # - run: yarn lint
       # - run: yarn test:unit:ci
       # - run: yarn build:ci
 
@@ -60,9 +60,6 @@ jobs:
 
       - name: Node info
         run: node -v
-
-      - name: __e Dir
-        run: ls /__e
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v6
