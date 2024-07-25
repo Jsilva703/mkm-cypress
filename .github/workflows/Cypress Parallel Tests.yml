@@ -19,14 +19,7 @@ jobs:
         run: yarn install
 
       - name: List files in workspace
-        run: ls -R
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
+        run: ls -R  # Lista todos os arquivos e diretórios para verificação
 
   ui-chrome-tests:
     timeout-minutes: 15
@@ -42,12 +35,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
 
       - name: Node info
         run: node -v
@@ -88,11 +75,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+      - name: Node info
+        run: node -v
 
       - name: "UI Tests - Chrome - Mobile"
         uses: cypress-io/github-action@v6
@@ -126,11 +110,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+      - name: Node info
+        run: node -v
 
       - name: "UI Tests - Firefox"
         uses: cypress-io/github-action@v6
@@ -163,11 +144,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+      - name: Node info
+        run: node -v
 
       - name: "UI Tests - Firefox - Mobile"
         uses: cypress-io/github-action@v6
