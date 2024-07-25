@@ -18,11 +18,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build the project
-        run: yarn build  # Adicione ou ajuste este comando conforme necessário para gerar o diretório build
-
       - name: List files in workspace
-        run: ls -R  # Lista todos os arquivos e diretórios para verificação
+        run: ls -R
 
       - name: Save build folder
         uses: actions/upload-artifact@v4
