@@ -19,11 +19,13 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           runTests: false
+
       # report machine parameters
       - run: yarn cypress info
       - run: node --version
       - run: node -p 'os.cpus()'
-      - run: yarn types
+      # Remove or comment out the next line if "types" command does not exist
+      # - run: yarn types
       - run: yarn lint
       - run: yarn test:unit:ci
       - run: yarn build:ci
