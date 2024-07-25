@@ -8,4 +8,5 @@ RUN yarn install
 
 COPY . .
 
+# Executa os testes Cypress diretamente
 CMD ["cypress", "run"]
