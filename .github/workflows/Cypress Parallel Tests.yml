@@ -1,4 +1,4 @@
-name: Cypress Parallel Tests
+name: Cypress Tests
 
 on:
   push:
@@ -18,15 +18,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: List files in workspace
-        run: ls -R
+      - name: Build the project
+        run: yarn build  # Adicione ou ajuste este comando conforme necessário
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
+      - name: List files in workspace
+        run: ls -R  # Lista todos os arquivos e diretórios para verificação
 
   ui-chrome-tests:
     timeout-minutes: 15
@@ -43,18 +39,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
       - name: Node info
         run: node -v
+
+      - name: __e Dir
+        run: ls /__e
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v6
         with:
+          build: yarn cypress info
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
@@ -67,6 +61,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: "cypress:server:args"
 
   ui-chrome-mobile-tests:
     timeout-minutes: 15
@@ -82,12 +77,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
 
       - name: "UI Tests - Chrome - Mobile"
         uses: cypress-io/github-action@v6
@@ -121,12 +110,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
       - name: "UI Tests - Firefox"
         uses: cypress-io/github-action@v6
         with:
@@ -157,12 +140,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
 
       - name: "UI Tests - Firefox - Mobile"
         uses: cypress-io/github-action@v6
