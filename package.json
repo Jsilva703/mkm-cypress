@@ -8,6 +8,7 @@
     "dev": "cypress open",
     "teste": "cypress run",
     "spec": "cypress run --spec",
+    "lint": "eslint .",
     "start": "node server.js"
   },
   "keywords": [],
