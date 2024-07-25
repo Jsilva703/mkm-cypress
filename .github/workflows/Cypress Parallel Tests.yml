@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Parallel Tests
 
 on:
   push:
@@ -18,23 +18,22 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build the project
-        run: yarn build  # Ajuste conforme necessário
-
       - name: List files in workspace
-        run: ls -R  # Verifica o diretório de trabalho
+        run: ls -R  # Lista todos os arquivos e diretórios para verificação
 
-  ui-chrome-tests:
-    timeout-minutes: 15
+  test:
     runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
-      options: --user 1001
     needs: install
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2, 3, 4, 5]
+        browser: [chrome, firefox]
+        viewport: [default, mobile]
+
+    container:
+      image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
+      options: --user 1001
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,22 +41,19 @@ jobs:
       - name: Node info
         run: node -v
 
-      - name: __e Dir
-        run: ls /__e
-
-      - name: "UI Tests - Chrome"
+      - name: "Run Cypress Tests"
         uses: cypress-io/github-action@v6
         with:
           start: yarn start:ci
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: chrome
+          browser: ${{ matrix.browser }}
           record: true
           parallel: true
-          group: "UI - Chrome"
+          group: "UI - ${{ matrix.browser }}$([[ matrix.viewport == 'mobile' ]] ? ' - Mobile' : '')"
           spec: cypress/tests/ui/*
           config-file: cypress.config.ts
+          config: ${{ matrix.viewport == 'mobile' && '{"e2e":{"viewportWidth":375,"viewportHeight":667}}' || '{}' }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEBUG: "cypress:server:args"
