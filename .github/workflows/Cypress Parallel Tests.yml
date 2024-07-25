@@ -15,20 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Cypress
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false
+      - name: Install dependencies
+        run: yarn install
 
-      # Report machine parameters
-      - run: yarn cypress info
-      - run: node --version
-      - run: node -p 'os.cpus()'
-      # Remove or comment out the next lines if the commands do not exist
-      # - run: yarn types
-      # - run: yarn lint
-      # - run: yarn test:unit:ci
-      # - run: yarn build:ci
+      - name: Build the project
+        run: yarn build  # Adicione ou ajuste este comando conforme necessário para gerar o diretório build
+
+      - name: List files in workspace
+        run: ls -R  # Lista todos os arquivos e diretórios para verificação
 
       - name: Save build folder
         uses: actions/upload-artifact@v4
@@ -60,6 +54,9 @@ jobs:
 
       - name: Node info
         run: node -v
+
+      - name: __e Dir
+        run: ls /__e
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v6
