@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Parallel Tests
 
 on:
   push:
@@ -17,9 +17,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
-      - name: Build the project
-        run: yarn build  # Adicione ou ajuste este comando conforme necessário
 
       - name: List files in workspace
         run: ls -R  # Lista todos os arquivos e diretórios para verificação
@@ -78,6 +75,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Node info
+        run: node -v
+
       - name: "UI Tests - Chrome - Mobile"
         uses: cypress-io/github-action@v6
         with:
@@ -110,6 +110,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Node info
+        run: node -v
+
       - name: "UI Tests - Firefox"
         uses: cypress-io/github-action@v6
         with:
@@ -140,6 +143,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Node info
+        run: node -v
 
       - name: "UI Tests - Firefox - Mobile"
         uses: cypress-io/github-action@v6

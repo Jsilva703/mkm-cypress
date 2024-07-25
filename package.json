@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js",
     "dev": "cypress open",
     "teste": "cypress run",
     "spec": "cypress run --spec",
     "lint": "eslint .",
     "test:unit:ci": "jest --ci --reporters=default --reporters=jest-junit",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:ci": "node API/server.js"
   },
   "keywords": [],
   "author": "Joao Victor <joaovictornunessilva12345@gmail.com>",
