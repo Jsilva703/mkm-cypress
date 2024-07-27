@@ -1,11 +1,9 @@
 const { defineConfig } = require("cypress");
 
-const cypressSplit = require("cypress-split");
-
 module.exports = defineConfig({
   projectId: "jp8ghz",
   e2e: {
-    setupNode(on, config) {
+    setupNodeEvents(on, config) {
       // Configuração do cypress-mochawesome-reporter
       require("cypress-mochawesome-reporter/plugin")(on);
 
@@ -18,12 +16,6 @@ module.exports = defineConfig({
     //baseUrl: "http://dockerhost", // Atualize aqui com o endereço IP correto
 
     // Renomeie integrationFolder para specPattern
-
-    setupNodeEvents(on, config) {
-      cypressSplit(on, config);
-      // IMPORTANT: return the config object
-      return config;
-    },
     reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir: "cypress/reports",
