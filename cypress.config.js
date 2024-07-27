@@ -5,7 +5,7 @@ const cypressSplit = require("cypress-split");
 module.exports = defineConfig({
   projectId: "jp8ghz",
   e2e: {
-    setupNodeEvents(on, config) {
+    setupNode(on, config) {
       // Configuração do cypress-mochawesome-reporter
       require("cypress-mochawesome-reporter/plugin")(on);
 

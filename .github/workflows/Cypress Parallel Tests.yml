@@ -1,9 +1,7 @@
 name: Cypress Parallel Tests
 
 on:
-  push:
-    branches-ignore:
-      - "renovate/**"
+  workflow_dispatch:  # Permite iniciar manualmente
 
 jobs:
   install:
