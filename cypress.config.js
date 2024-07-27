@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+
 const cypressSplit = require("cypress-split");
 
 module.exports = defineConfig({
@@ -8,23 +9,21 @@ module.exports = defineConfig({
       // Configuração do cypress-mochawesome-reporter
       require("cypress-mochawesome-reporter/plugin")(on);
 
-      // Configuração do cypress-split
-      cypressSplit(on, config);
-
       // Outras configurações de plugins
-      const additionalConfig = require("./cypress/plugins/index.js")(
-        on,
-        config
-      );
-
-      // IMPORTANT: return the config object
-      return { ...config, ...additionalConfig };
+      return require("./cypress/plugins/index.js")(on, config);
     },
     requestTimeout: 10000,
     defaultCommandTimeout: 25000,
     connectTimeout: 35000,
-    // baseUrl: "http://dockerhost", // Atualize aqui com o endereço IP correto
-    specPattern: "cypress/integration/**/*.spec.js", // Atualize o padrão de especificação conforme necessário
+    //baseUrl: "http://dockerhost", // Atualize aqui com o endereço IP correto
+
+    // Renomeie integrationFolder para specPattern
+
+    setupNodeEvents(on, config) {
+      cypressSplit(on, config);
+      // IMPORTANT: return the config object
+      return config;
+    },
     reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir: "cypress/reports",
