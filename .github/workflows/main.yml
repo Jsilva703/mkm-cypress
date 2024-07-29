@@ -1,39 +1,80 @@
-name: Run Cypress Tests for MODO1, MODO2, MODO3
+name: Cypress Parallel
 
 on:
   workflow_dispatch:  # Permite iniciar manualmente
   schedule:
-    - cron: '0 16 * * 1,4' # Executaàs 16:00 UTC (13:00 BRT) segunda e quinta
+    - cron: '0 16 * * 1-5' # Executa às 16:00 UTC (13:00 BRT) segunda a sexta https://crontab.guru/#0_22_*_*_1-5
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        mode:
-          - MODO1
-          - MODO2
-          - MODO3
+        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Log workflow dispatch
+        run: echo "Workflow dispatched at $(date)"
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '14'
 
-      - name: Install Dependencies
-        run: yarn install
-
-      - name: Run Cypress Tests for ${{ matrix.mode }}
-        run: yarn spec "cypress/e2e/Cypressjoao/MkWhatsOne/${{ matrix.mode }}.cy.js"
-        working-directory: ${{ github.workspace }}
-
-      - name: Upload Cypress Artifacts for ${{ matrix.mode }}
-        uses: actions/upload-artifact@v2
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
         with:
-          name: cypress-artifacts-${{ matrix.mode }}
-          path: cypress/screenshots, cypress/videos
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Notify Cronitor start
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
+
+      - name: Run Cypress tests and record
+        run: npx cypress run --record --parallel --ci-build-id ${{ github.run_id }} --group ${{ matrix.containers }} --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        env:
+          CI: true
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: Archive Cypress test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports
+
+      - name: Archive Cypress HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-html-report
+          path: cypress/reports/*.html
+
+      - name: Archive screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Archive videos on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Notify Cronitor complete
+        if: success()
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=complete'
+
+      - name: Notify Cronitor failure
+        if: failure()
+        run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=fail'
