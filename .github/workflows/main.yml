@@ -1,4 +1,4 @@
-name: Cypress Parallel
+name: Cypress
 
 on:
   workflow_dispatch:  # Permite iniciar manualmente
@@ -8,10 +8,6 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     steps:
       - name: Log workflow dispatch
@@ -39,8 +35,8 @@ jobs:
       - name: Notify Cronitor start
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
 
-      - name: Run Cypress tests and record
-        run: npx cypress run --record --parallel --ci-build-id ${{ github.run_id }} --group ${{ matrix.containers }} --key ${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Run Cypress tests and record in parallel
+        run: npx cypress run --record --parallel --key ${{ secrets.CYPRESS_RECORD_KEY }}
         env:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

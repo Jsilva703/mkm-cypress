@@ -1,7 +1,7 @@
 const LoginCypress = {
-  Seu_domínio: "mkomchannels",
-  seu_login: "jsilva",
-  sua_senha: "12345",
+  Seu_domínio: "meg",
+  seu_login: "cypress",
+  sua_senha: "19751906",
 };
 
 Cypress.Commands.add("visitarURL", () => {

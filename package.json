@@ -6,11 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cypress open",
-    "teste": "cypress run",
+    "teste": "cypress run --record --parallel --key $CYPRESS_RECORD_KEY",
     "spec": "cypress run --spec",
     "lint": "eslint .",
     "test:unit:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "start": "node server.js",
+    "cy:run": "cypress run",
+    "cy:parallel": "cypress-parallel -s 'cypress run --spec \"cypress/e2e/Cypressjoao/**/*.cy.js\"' -t 2",
     "start:ci": "node API/server.js"
   },
   "keywords": [],
@@ -18,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.2",
+    "cypress-parallel": "^0.14.0",
     "cypress-sonarqube-reporter": "^1.13.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
