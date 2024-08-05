@@ -1,8 +1,9 @@
 Cypress.Commands.add("configg", () => {
   // comando do channels
-  cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]')
-    .should("be.visible")
-    .click();
+  //cy.get('img[src="assets/mklib/images/icons-2021/avatar.png"]')
+  //.should("be.visible")
+  //.click();
+  cy.get('div[aria-label="cypress"]').dblclick();
   cy.wait(4000);
   cy.get('[data-tour="configuração"] > .MuiStack-root').click({ force: true });
 });
