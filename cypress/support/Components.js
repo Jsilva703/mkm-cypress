@@ -302,3 +302,7 @@ Cypress.Commands.add("ContactGestão", () => {
     .should("be.visible")
     .type("João Victor", { delay: 100 });
 });
+
+Cypress.Commands.add("pesquisa", () => {
+  cy.contains("Pular").should("be.visible").click({ force: true });
+});

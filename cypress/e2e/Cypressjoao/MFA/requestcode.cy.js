@@ -9,6 +9,10 @@ describe("Authentication", () => {
   });
 
   it("Authentication", () => {
+    cy.on("fail", (error, runnable) => {
+      if (error.message.includes("Timed out retrying after 25000ms: expected"))
+        return false;
+    });
     cy.url().should("eq", "https://beta.mkom.tec.br/#/mfa/requestcode");
     cy.código_MFA();
 

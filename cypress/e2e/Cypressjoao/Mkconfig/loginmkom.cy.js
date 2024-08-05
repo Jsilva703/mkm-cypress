@@ -1,17 +1,19 @@
-import '../../../support/Components'
-import '../../../support/config'
+import "../../../support/Components";
+import "../../../support/config";
 
-describe('Filter Login', () => {
-    it('Deve fazer login com sucesso', () => {
+describe("Filter Login", () => {
+  beforeEach(() => {
+    cy.visitarURL();
+    cy.LoginCypress();
+    //cy.pesquisa();
+    cy.API();
+    cy.closeTour();
+    cy.mapearCenters();
+  });
 
-        cy.visitarURL();
-        cy.LoginCypress();
-        cy.API();
-        cy.closeTour();
-        cy.mapearCenters();
-        cy.configg();
-        cy.menuopen();
-        cy.Filterlogin();
-        
-    });
+  it("Deve fazer login com sucesso", () => {
+    cy.configg();
+    cy.menuopen();
+    cy.Filterlogin();
+  });
 });
