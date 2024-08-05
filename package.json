@@ -24,7 +24,7 @@
     "cypress-sonarqube-reporter": "^1.13.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "fast-xml-parser": "^4.4.0",
+    "fast-xml-parser": "^4.4.1",
     "mocha": "^10.5.2"
   },
   "devDependencies": {
@@ -41,6 +41,6 @@
   },
   "repository": "git@github.com:Joao848846/mkm-cypress.git",
   "resolutions": {
-    "fast-xml-parser": "4.4.0"
+    "fast-xml-parser": "4.4.1"
   }
 }
