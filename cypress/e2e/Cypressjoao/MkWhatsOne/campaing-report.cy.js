@@ -1,4 +1,5 @@
 import '../../../support/Components'
+import '../../../support/one';
 
 describe('Teste de Login no MKM Service', () => {
     it('Campaing-report', () => {

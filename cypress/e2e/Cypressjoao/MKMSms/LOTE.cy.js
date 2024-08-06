@@ -1,27 +1,23 @@
-import '../../../support/Components'
-import 'cypress-file-upload';
+import "../../../support/Components";
+import '../../../support/sms'
+import "cypress-file-upload";
 
+describe("Envio lote", () => {
+  before(() => {
+    cy.visitarURL();
+    cy.LoginCypress();
+    cy.API();
+  });
 
-describe('Envio lote', () => {
+  beforeEach(() => {
+    cy.closeTour();
+  });
 
-    before(() => {
-        cy.visitarURL();   
-        cy.LoginCypress();
-        cy.API();          
-    });
-
-    beforeEach(() => {
-       
-        cy.closeTour();    
-    });
-
-    it('Edit Connection', () => {
-        
-        cy.mapearCenters(); 
-        cy.N1(); 
-        cy.Sms();   
-        cy.envio();   
-        cy.lote();    
-        
-        });
+  it("Edit Connection", () => {
+    cy.mapearCenters();
+    cy.N1();
+    cy.Sms();
+    cy.envio();
+    cy.lote();
+  });
 });

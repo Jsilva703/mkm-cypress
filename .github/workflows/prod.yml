@@ -1,25 +1,25 @@
 name: Cypress
-
+ 
 on:
   workflow_dispatch:  # Permite iniciar manualmente
   schedule:
-    - cron: '0 16 * * 1,4' # Executaàs 16:00 UTC (13:00 BRT) segunda e quinta
+    - cron: '0 16 * * 1-5' # Executaàs 16:00 UTC (13:00 BRT) segunda a sexta https://crontab.guru/#0_22_*_*_1-5
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
+  
     steps:
       - name: Log workflow dispatch
         run: echo "Workflow dispatched at $(date)"
-
+ 
       - name: Checkout repository
         uses: actions/checkout@v4
-
+ 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '14'
-
+ 
       - name: Cache npm dependencies
         uses: actions/cache@v4
         with:
@@ -27,51 +27,49 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
+ 
       - name: Install dependencies
         run: npm install
-
+ 
       - name: Notify Cronitor start
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
-
+ 
       - name: Run Cypress tests and record
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
         env:
           CI: true
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }} 
+ 
       - name: Archive Cypress test results
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: cypress/reports
-
+ 
       - name: Archive Cypress HTML report
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-html-report
           path: cypress/reports/*.html
-
+ 
       - name: Archive screenshots on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-
+ 
       - name: Archive videos on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos
-
+ 
       - name: Notify Cronitor complete
         if: success()
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=complete'
-
+ 
       - name: Notify Cronitor failure
         if: failure()
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=fail'
-
-
