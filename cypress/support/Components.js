@@ -27,7 +27,6 @@ Cypress.Commands.add("API", () => {
   }).as("allSuccessfulRequests"); // garantir que todas as interceptações sejam atribuídas ao mesmo alias
 
   cy.wait("@allSuccessfulRequests", { timeout: 50000 });
-  cy.wait(2000);
 });
 
 Cypress.Commands.add("closeTour", () => {
@@ -168,12 +167,9 @@ Cypress.Commands.add("Config", () => {
     ".MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-1ti72ph",
     "Configurações",
     { timeout: 0 }
-  ).then(($el) => {
-    if ($el.length) {
-      // Se o elemento estiver presente, execute o clique
-      cy.wrap($el).click();
-    }
-  });
+  )
+    .should("exist")
+    .click();
 });
 
 Cypress.Commands.add("Subject", () => {
@@ -268,34 +264,15 @@ Cypress.Commands.add("choosedate", () => {
     .should("have.text", "Monitoramento")
     .click({ force: true });
   cy.get('span.material-icons[data-tour="menuClose"]').click();
-  //cy.get('button[aria-label="Choose date, selected date is 11 de jun de 2024"][type="button"]').click({force: true})
-  //cy.get('.MuiPickersPopper-paper .MuiDayCalendar-slideTransition button:nth-child(1)')
-  // .should('be.visible')
-  // cy.get('[aria-label="sábado"]').should('be.visible').should('exist')
-  // .should('exist')
-  //.click({multiple: true})
-  //cy.get('.MuiPickersDay-root').contains('1').click();
-
-  //cy.get('svg')
-  // .should('have.attr', 'width', '20')
-  //.and('have.attr', 'height', '20')
-  //.find('path')
-  //.first()
-  //.invoke('attr', 'fill', 'blue')
-  //.click()
-  //cy.get('div[aria-label="Choose date"] button').click({force: true})
 });
 Cypress.Commands.add("ContactGestão", () => {
   cy.contains(
     ".MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-1ti72ph",
     "Contatos",
     { timeout: 0 }
-  ).then(($el) => {
-    if ($el.length) {
-      // Se o elemento estiver presente, execute o clique
-      cy.wrap($el).click();
-    }
-  });
+  )
+    .should("exist")
+    .click();
   cy.contains("Gestão de Contatos").should("be.visible").click({ force: true });
   cy.wait(3000);
   cy.get('input[name="name"]')
