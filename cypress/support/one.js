@@ -2,7 +2,7 @@ Cypress.Commands.add("block", () => {
   cy.wait(1000);
   cy.get('div[data-tour="Blocklist"]').should("exist").click({ force: true });
   cy.wait(1000);
-  cy.get(".MuiOutlinedInput-input").type("13996341251", { delay: 700 });
+  cy.get(".MuiOutlinedInput-input").type("13996341251", { delay: 800 });
   cy.get('button[aria-label="Buscar"][type="button"]').click();
 });
 
