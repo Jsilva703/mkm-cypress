@@ -1,9 +1,9 @@
 Cypress.Commands.add("block", () => {
-  cy.wait(1000);
+  cy.log("Filtrando número");
   cy.get('div[data-tour="Blocklist"]').should("exist").click({ force: true });
-  cy.wait(1000);
   cy.get(".MuiOutlinedInput-input").type("13996341251", { delay: 800 });
-  cy.get('button[aria-label="Buscar"][type="button"]').click();
+  cy.get('button[aria-label="Buscar"][type="button"]').as("searchButton");
+  cy.get("@searchButton").click();
 });
 
 Cypress.Commands.add("campanha", () => {
