@@ -9,6 +9,7 @@
     "teste": "cypress run --record --parallel --key $CYPRESS_RECORD_KEY",
     "spec": "cypress run --spec",
     "lint": "eslint .",
+    "prepare": "husky install",
     "test:unit:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "start": "node server.js",
     "cy:run": "cypress run",
@@ -28,12 +29,15 @@
     "mocha": "^10.5.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@testing-library/cypress": "^10.0.2",
     "cypress": "^13.11.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-real-events": "^1.12.0",
     "cypress-split": "^1.24.0",
+    "husky": "^9.1.4",
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
     "webpack": "^5.93.0",
