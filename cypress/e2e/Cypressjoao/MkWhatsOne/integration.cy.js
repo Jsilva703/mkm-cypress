@@ -13,7 +13,7 @@ describe("Integration Reply Channels", () => {
     cy.menuopen();
     cy.findByText("Integrações").should("be.visible").click();
     cy.findByText("Palavras-Chave MKChannels").should("be.visible").click();
-    cy.findByLabelText("Palavra-Chave").type("CYPRESS", { delay: 500 });
+    cy.findByLabelText("Palavra-Chave").type("CYPRESS", { delay: 800 });
     cy.buscar();
   });
 });
