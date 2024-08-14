@@ -3,7 +3,7 @@ name: Cypress
 on:
   workflow_dispatch:  # Permite iniciar manualmente
   schedule:
-    - cron: '0 16 * * 1-5' # Executaàs 16:00 UTC (13:00 BRT) segunda a sexta https://crontab.guru/#0_22_*_*_1-5
+    - cron: '0 16 * * 1-5' # Executa às 16:00 UTC (13:00 BRT) segunda a sexta https://crontab.guru/#0_22_*_*_1-5
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -30,6 +30,17 @@ jobs:
  
       - name: Install dependencies
         run: npm install
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+ 
+      - name: Install Cypress
+        run: npx cypress install
  
       - name: Notify Cronitor start
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
