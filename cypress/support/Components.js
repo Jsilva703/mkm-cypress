@@ -55,6 +55,7 @@ Cypress.Commands.add("mapearCenters", () => {
   cy.get(":nth-child(1) > center > .paper-lobby").as("N1"); // MKMSMS
   cy.get(":nth-child(2) > center > .paper-lobby").as("N2"); // MKCHANNELS
   cy.get(":nth-child(3) > center > .paper-lobby").as("N3"); // MKWHATSONE
+  cy.get(":nth-child(4) > center > .paper-lobby").as("N4"); // ILIMITBOT
 });
 
 Cypress.Commands.add("N3", () => {
