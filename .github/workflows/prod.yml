@@ -44,8 +44,8 @@ jobs:
       - name: Notify Cronitor start
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
 
-      - name: Run Cypress tests and record
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Run Cypress tests in production
+        run: yarn test:prod
         env:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
