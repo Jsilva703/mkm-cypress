@@ -10,10 +10,10 @@ module.exports = defineConfig({
       // Outras configurações de plugins
       return require("./cypress/plugins/index.js")(on, config);
     },
+    baseUrl: "https://alpha3.mkom.tec.br/",
     requestTimeout: 10000,
     defaultCommandTimeout: 25000,
     connectTimeout: 35000,
-    //baseUrl: "http://dockerhost", // Atualize aqui com o endereço IP correto
 
     // Renomeie integrationFolder para specPattern
     reporter: "cypress-mochawesome-reporter",
