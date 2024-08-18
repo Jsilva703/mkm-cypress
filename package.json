@@ -12,7 +12,9 @@
     "prepare": "husky install",
     "test:unit:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "start": "node server.js",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run", 
+    "test:prod": "cypress run --config baseUrl=https://portal.mkom.tec.br/",
+    "test:beta": "cypress run --config baseUrl=https://beta.mkom.tec.br/",
     "cy:parallel": "cypress-parallel -s 'cypress run --spec \"cypress/e2e/Cypressjoao/**/*.cy.js\"' -t 2",
     "start:ci": "node API/server.js"
   },

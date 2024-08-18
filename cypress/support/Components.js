@@ -5,7 +5,7 @@ const LoginCypress = {
 };
 
 Cypress.Commands.add("visitarURL", () => {
-  cy.visit("https://portal.mkom.tec.br/#/");
+  cy.visit("/");
 });
 
 Cypress.Commands.add("LoginCypress", () => {
