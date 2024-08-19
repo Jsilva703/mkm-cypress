@@ -1,4 +1,4 @@
-name: PROD
+name: BETA
 
 on:
   workflow_dispatch:  # Permite iniciar manualmente
@@ -44,8 +44,8 @@ jobs:
       - name: Notify Cronitor start
         run: curl -X POST 'https://cronitor.link/p/95228ef28fdb492ca3c80ca7fdac0443/zJRpN1?state=run'
 
-      - name: Run Cypress tests in production
-        run: yarn test:prod
+      - name: Run Cypress tests in beta
+        run: yarn test:beta
         env:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
