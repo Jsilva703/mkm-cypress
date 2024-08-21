@@ -7,15 +7,23 @@ module.exports = defineConfig({
       // Configuração do cypress-mochawesome-reporter
       require("cypress-mochawesome-reporter/plugin")(on);
 
+      // Task para capturar e logar informações
+      on("task", {
+        log(message) {
+          console.log(message);
+          return null;
+        },
+      });
+
       // Outras configurações de plugins
       return require("./cypress/plugins/index.js")(on, config);
     },
+
     baseUrl: "https://alpha3.mkom.tec.br/",
     requestTimeout: 10000,
     defaultCommandTimeout: 25000,
     connectTimeout: 35000,
 
-    // Renomeie integrationFolder para specPattern
     reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
       reportDir: "cypress/reports",

@@ -1,12 +1,11 @@
 import "./../../../support/Components";
-import "./../../../support/config";
+import "./../../../support/ilimitbot";
 
-describe("Streaming QRCODE", () => {
+describe("Validar Bots", () => {
   let apiResponses = [];
   before(() => {
-    cy.clearCookies();
     cy.visitarURL();
-    cy.clearCookies(); // adaptação para limpar possíveis problemas de autenticação
+    cy.clearCookies();
     cy.clearLocalStorage();
     cy.LoginCypress();
     cy.API();
@@ -24,12 +23,13 @@ describe("Streaming QRCODE", () => {
     }).as("apiRequest");
     cy.closeTour();
     cy.mapearCenters();
-    cy.configg();
+    cy.N4();
     cy.menuopen();
   });
 
-  it("Validation Function", () => {
-    cy.qrcode();
+  it("Validation Bots", () => {
+    cy.canais();
+    cy.fluxoBot();
   });
 
   afterEach(function () {
