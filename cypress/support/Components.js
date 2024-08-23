@@ -58,6 +58,10 @@ Cypress.Commands.add("mapearCenters", () => {
   cy.get(":nth-child(4) > center > .paper-lobby").as("N4"); // ILIMITBOT
 });
 
+Cypress.Commands.add("N4", () => {
+  cy.get("@N4").should("exist").click();
+});
+
 Cypress.Commands.add("N3", () => {
   cy.get("@N3").should("exist").click();
 });
