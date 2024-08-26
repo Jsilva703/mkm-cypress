@@ -1,9 +1,9 @@
 import { before, beforeEach } from "mocha";
-import "./../../../support/sms";
-import "./../../../support/Components";
+import "../../support/sms";
+import "../../support/Components";
 import "@testing-library/cypress/add-commands";
 
-describe("Consulta número", () => {
+describe("Dinamico", () => {
   let apiResponses = [];
 
   before(() => {
@@ -31,9 +31,8 @@ describe("Consulta número", () => {
     cy.menuopen();
   });
 
-  it("Report/Consulta número", () => {
-    cy.block();
-    cy.buscar();
+  it("Report/Dinamico", () => {
+    cy.dashboard();
     cy.menuClose();
   });
 

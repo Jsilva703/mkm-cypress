@@ -30,7 +30,7 @@ describe("MODO 2 API", () => {
       body: modo2,
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTEwMDE2OTgsInVzZXJfaWQiOjE1NjY3LCJjdXN0b21lcl9pZCI6NjUyLCJhdWQiOiJhcGkiLCJ1aWQiOiI5NGExYmYyYi00NmM4LTQ1NGUtYTVmMS1lNjcxZDlmNjQ2ODUifQ.4QhvdaDcnY-WY-DeWiwXFemhKbsNBSiXpFm4IHSjmFg",
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTU5MDc0MjQsInVzZXJfaWQiOjE4MzQ1LCJjdXN0b21lcl9pZCI6MTYyNCwiYXVkIjoiYXBpIiwidWlkIjoiNzliZDg4NTUtMDQ1Ny00MDA5LTg5MjMtYmFlYTRiYWQ2MDA2In0.ghT8Ql4FBv9H-0xlUaig0u9u3WoHyhn9DDenIMa8Yos",
         "Content-Type": "application/json",
       },
     }).then((response) => {

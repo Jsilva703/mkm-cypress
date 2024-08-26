@@ -19,7 +19,7 @@ module.exports = defineConfig({
       return require("./cypress/plugins/index.js")(on, config);
     },
 
-    baseUrl: "https://alpha3.mkom.tec.br/",
+    baseUrl: "https://beta.mkom.tec.br/",
     requestTimeout: 10000,
     defaultCommandTimeout: 25000,
     connectTimeout: 35000,

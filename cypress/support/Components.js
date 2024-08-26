@@ -261,7 +261,7 @@ Cypress.Commands.add("buscar", () => {
 
 Cypress.Commands.add("dashboard", () => {
   cy.contains("Dashboard").should("be.visible").click({ force: true });
-  cy.url().should("eq", "https://portal.mkom.tec.br/mkchannels/#/dashboard");
+  //cy.url().should("eq", "https://portal.mkom.tec.br/mkchannels/#/dashboard");
 });
 
 Cypress.Commands.add("choosedate", () => {

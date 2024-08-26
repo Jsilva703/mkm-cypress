@@ -1,13 +1,13 @@
-describe("MODO 1 API", () => {
+describe("MODO 3 API", () => {
   it("Executar envio da campanha", () => {
     const dataAtual = new Date();
     const dataFormatada = dataAtual.toISOString();
 
-    const modo1 = {
+    const modo3 = {
       name: "teste API",
       templates: [
         {
-          text: "Texto numero 1",
+          text: "TESTE API ONE",
         },
       ],
       costCenter: {
@@ -25,11 +25,11 @@ describe("MODO 1 API", () => {
     // Envia o JSON para a API usando cy.request()
     cy.request({
       method: "POST",
-      url: "https://whatsappcross-api.mkmservice.com/api/campaigns/mode1",
-      body: modo1,
+      url: "https://whatsappcross-api.mkmservice.com/api/campaigns/mode3",
+      body: modo3,
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTEwMDE2OTgsInVzZXJfaWQiOjE1NjY3LCJjdXN0b21lcl9pZCI6NjUyLCJhdWQiOiJhcGkiLCJ1aWQiOiI5NGExYmYyYi00NmM4LTQ1NGUtYTVmMS1lNjcxZDlmNjQ2ODUifQ.4QhvdaDcnY-WY-DeWiwXFemhKbsNBSiXpFm4IHSjmFg",
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NTU5MDc0MjQsInVzZXJfaWQiOjE4MzQ1LCJjdXN0b21lcl9pZCI6MTYyNCwiYXVkIjoiYXBpIiwidWlkIjoiNzliZDg4NTUtMDQ1Ny00MDA5LTg5MjMtYmFlYTRiYWQ2MDA2In0.ghT8Ql4FBv9H-0xlUaig0u9u3WoHyhn9DDenIMa8Yos",
         "Content-Type": "application/json",
       },
     }).then((response) => {
