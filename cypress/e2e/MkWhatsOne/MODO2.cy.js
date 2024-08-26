@@ -20,7 +20,7 @@ describe("MODO 2 API", () => {
       endTime: "23:00",
       scheduledAt: dataFormatada, // Utiliza a data atual
       daysWeek: [1, 2, 3, 4, 5],
-      connectionsId: [12535],
+      connectionsId: [7310],
     };
 
     // Envia o JSON para a API usando cy.request()

@@ -1,6 +1,6 @@
 import { beforeEach } from "mocha";
-import "./../../../support/channels";
-import "./../../../support/Components";
+import "./../../support/channels";
+import "./../../support/Components";
 
 describe("Integrations", () => {
   let apiResponses = [];

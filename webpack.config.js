@@ -1,10 +1,10 @@
-const path = require("path");
+const webpack = require("@cypress/webpack-preprocessor");
 
-module.exports = {
-  entry: "./src/index.js",
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  mode: "development",
+module.exports = (on) => {
+  const options = {
+    webpackOptions: require("../../webpack.config.js"), // Certifique-se de que o caminho para o arquivo webpack está correto
+    watchOptions: {},
+  };
+
+  on("file:preprocessor", webpack(options));
 };
