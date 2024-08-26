@@ -1,5 +1,5 @@
-import "../../../support/Components";
-import "../../../support/MFA";
+import "./../../support/Components";
+import "./../../../support/MFA";
 
 describe("Authentication", () => {
   before(() => {

@@ -1,6 +1,6 @@
 import { before, beforeEach } from "mocha";
-import "../../support/sms";
-import "../../support/Components";
+import "./../../support/Components";
+import "./../../support/sms";
 import "@testing-library/cypress/add-commands";
 
 describe("Consulta número", () => {

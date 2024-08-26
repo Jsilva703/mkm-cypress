@@ -1,28 +1,22 @@
-import { beforeEach } from 'mocha';
-import '../../../support/Components'
+import { beforeEach } from "mocha";
+import "./../../support/Components";
 
-describe('Dashboard', () => {
+describe("Dashboard", () => {
+  before(() => {
+    cy.visitarURL();
+    cy.LoginCypress();
+    cy.API();
+  });
 
-    before(() => {
+  beforeEach(() => {
+    cy.closeTour();
+  });
 
-        cy.visitarURL();
-        cy.LoginCypress();
-        cy.API();
-
-    });
-
-    beforeEach(() => {
-
-        cy.closeTour();
-    });
-
-    it('Dashboard', () => {
-
-        cy.mapearCenters();
-        cy.N2();
-        cy.menuopen();
-        cy.choosedate();
-        cy.buscar();
-       
-    })
-})
+  it("Dashboard", () => {
+    cy.mapearCenters();
+    cy.N2();
+    cy.menuopen();
+    cy.choosedate();
+    cy.buscar();
+  });
+});
