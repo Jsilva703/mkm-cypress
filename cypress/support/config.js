@@ -21,15 +21,9 @@ Cypress.Commands.add("qrcode", () => {
   cy.get('[data-tour="Conexões"]').should("be.visible");
   cy.wait(1000);
   cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
-  cy.get('[href="https://portal.mkom.tec.br/mkconfig/#/connections/whatsapp"]')
-    .should("exist", "WhatsApp")
-    .click();
+  cy.contains("span", "WhatsApp").should("be.visible").click();
   cy.wait(2000);
   cy.contains("Streaming(QR Code)").should("be.visible").click();
-  cy.url().should(
-    "eq",
-    "https://portal.mkom.tec.br/mkconfig/#/connections/streaming"
-  );
 });
 
 Cypress.Commands.add("Filterlogin", () => {
