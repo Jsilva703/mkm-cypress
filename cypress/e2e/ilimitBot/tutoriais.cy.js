@@ -1,5 +1,5 @@
-import "./../../../support/Components";
-import "./../../../support/ilimitbot";
+import "../../support/Components";
+import "../../support/ilimitbot";
 
 describe("Validar Bots", () => {
   let apiResponses = [];

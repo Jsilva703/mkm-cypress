@@ -1,16 +1,13 @@
-import '../../../support/Components'
+import "../../support/Components";
 
-describe('Edit Connection', () => {
+describe("Edit Connection", () => {
+  before(() => {
+    cy.visitarURL();
+    cy.LoginCypress();
+    cy.API();
+  });
 
-    before(() => {
-        cy.visitarURL();   
-        cy.LoginCypress();
-        cy.API();          
-    });
-
-    beforeEach(() => {
-        
-        cy.closeTour();    
-    });
-
-})
+  beforeEach(() => {
+    cy.closeTour();
+  });
+});
