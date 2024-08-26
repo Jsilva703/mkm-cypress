@@ -1,5 +1,5 @@
-import "./../../support/Components";
-import "./../../support/config";
+import "./../../../support/Components";
+import "./../../../support/config";
 
 describe("Streaming QRCODE", () => {
   let apiResponses = [];
