@@ -11,7 +11,7 @@ describe("MODO 1 API", () => {
         },
       ],
       costCenter: {
-        _id: 18373,
+        _id: 18861,
       },
       urlMailing:
         "https://mkdocs-201908.s3.sa-east-1.amazonaws.com:443/652/production/43d56d6daeb2d36d7e78fc52b54dceeb_652/production/testeone11111.csv",
@@ -19,7 +19,7 @@ describe("MODO 1 API", () => {
       endTime: "23:00",
       scheduledAt: dataFormatada,
       daysWeek: [1, 2, 3, 4, 5],
-      connectionsId: [12535],
+      connectionsId: [7310],
     };
 
     // Envia o JSON para a API usando cy.request()

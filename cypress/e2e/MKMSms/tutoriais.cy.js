@@ -1,6 +1,5 @@
-import "../../../support/Components";
-import '../../../support/sms'
-
+import "./../../support/Components";
+import "./../../support/sms";
 
 describe("Tutorial", () => {
   before(() => {

@@ -1,5 +1,5 @@
-import "./../../../support/Components";
-import "./../../../support/one";
+import "./../../support/Components";
+import "./../../support/one";
 import "@testing-library/cypress/add-commands";
 
 describe("Recent and New", () => {

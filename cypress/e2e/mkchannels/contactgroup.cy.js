@@ -1,4 +1,4 @@
-import "../../support/Components";
+import "./../../support/Components";
 
 describe("Edit Connection", () => {
   before(() => {

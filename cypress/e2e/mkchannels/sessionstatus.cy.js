@@ -1,9 +1,7 @@
-import '../../../support/Components'
+import "./../../support/Components";
 
-describe('Session Status', () => {
-
-   it('Session Status', () => {
-
+describe("Session Status", () => {
+  it("Session Status", () => {
     cy.visitarURL();
     cy.LoginCypress();
     cy.API();
@@ -14,5 +12,5 @@ describe('Session Status', () => {
     cy.Config();
     cy.sessionstatus();
     cy.menuClose();
-   })
-})
+  });
+});
