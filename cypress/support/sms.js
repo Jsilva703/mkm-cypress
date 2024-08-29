@@ -88,3 +88,11 @@ Cypress.Commands.add("block", () => {
   cy.contains("span", "Blocklist").should("be.visible").click();
   cy.findByLabelText("Telefone").type("11911031988", { delay: 800 });
 });
+
+Cypress.Commands.add("resposta", () => {
+  cy.contains("span", "Respostas").should("be.visible").click();
+});
+
+Cypress.Commands.add("login", () => {
+  cy.contains("span", "Logins").should("be.visible").click();
+});

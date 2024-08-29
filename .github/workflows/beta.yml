@@ -2,8 +2,6 @@ name: BETA
 
 on:
   workflow_dispatch:  # Permite iniciar manualmente
-  schedule:
-    - cron: '0 18 * * 1-5' # Executa às 18:00 UTC (15:00 BRT) segunda a sexta https://crontab.guru/#0_22_*_*_1-5
 
 jobs:
   cypress-run:

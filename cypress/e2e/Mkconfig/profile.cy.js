@@ -1,7 +1,9 @@
-import "./../../support/Components";
+import { before, beforeEach } from "mocha";
 import "./../../support/config";
+import "./../../support/Components";
+import "@testing-library/cypress/add-commands";
 
-describe("Streaming QRCODE", () => {
+describe("Profile Picture", () => {
   let apiResponses = [];
   before(() => {
     cy.clearCookies();
@@ -28,8 +30,8 @@ describe("Streaming QRCODE", () => {
     cy.menuopen();
   });
 
-  it("Validation Function", () => {
-    cy.qrcode();
+  it("Profile Picture", () => {
+    cy.profile();
   });
 
   afterEach(function () {

@@ -1,12 +1,15 @@
+import { before, beforeEach } from "mocha";
+import "./../../support/sms";
 import "./../../support/Components";
-import "./../../support/config";
+import "@testing-library/cypress/add-commands";
 
-describe("Streaming QRCODE", () => {
+describe("Login SMS", () => {
   let apiResponses = [];
+
   before(() => {
     cy.clearCookies();
     cy.visitarURL();
-    cy.clearCookies(); // adaptação para limpar possíveis problemas de autenticação
+    cy.clearCookies();
     cy.clearLocalStorage();
     cy.LoginCypress();
     cy.API();
@@ -24,12 +27,18 @@ describe("Streaming QRCODE", () => {
     }).as("apiRequest");
     cy.closeTour();
     cy.mapearCenters();
-    cy.configg();
+    cy.N1();
     cy.menuopen();
   });
 
-  it("Validation Function", () => {
-    cy.qrcode();
+  it("Configuration/Logins", () => {
+    cy.findByText("Configurações").should("be.visible").click();
+    cy.login();
+    cy.menuClose();
+    cy.findByLabelText("ID").type("18422", { delay: 500 });
+    cy.buscar();
+    cy.contains("span", "more_vert").click();
+    cy.findByText("list").should("exist").click();
   });
 
   afterEach(function () {
@@ -43,6 +52,7 @@ describe("Streaming QRCODE", () => {
 
   after(() => {
     cy.log("All tests completed");
+
     cy.task("log", JSON.stringify(apiResponses, null, 2));
   });
 });

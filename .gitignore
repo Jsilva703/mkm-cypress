@@ -3,5 +3,6 @@ cypress/video/
 cypress/screenshots/
 cypress/env/
 cypress/reports/
+node_modules
 cypress/redoc-static.html
 
