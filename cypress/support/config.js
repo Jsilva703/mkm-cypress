@@ -6,7 +6,7 @@ Cypress.Commands.add("configg", () => {
 
 Cypress.Commands.add("qrcode", () => {
   cy.get('[data-tour="Conexões"]').should("be.visible");
-  cy.wait(1000);
+  //cy.wait(1000);
   cy.get('[data-tour="Conexões"] > :nth-child(2) >').click();
   cy.contains("span", "WhatsApp").should("be.visible").click();
   cy.wait(2000);
