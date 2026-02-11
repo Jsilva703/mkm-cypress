@@ -22,7 +22,7 @@
   "author": "Joao Victor <joaovictornunessilva12345@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "1.7.3",
+    "axios": "1.13.5",
     "cypress-parallel": "^0.14.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
